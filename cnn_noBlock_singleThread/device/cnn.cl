@@ -28,7 +28,7 @@ __kernel void cnn(__global float* input, __global float* weights, __global float
 	unsigned long row = get_global_id(1);
 	unsigned long col = get_global_id(2);
 
-	unsigned long row, col, to, ti;
+	unsigned long ti;
 	
 	for(ti=0; ti<N_ifm; ti++) {
 		unsigned long i, j;
