@@ -2,3 +2,6 @@ build.log
 build_qsub_aoc.*
 cnn.*.temp/
 *.aocx
+*.aocr
+*.aoco
+cnn/
