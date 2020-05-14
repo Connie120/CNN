@@ -1,0 +1,4 @@
+build.log
+build_qsub_aoc.*
+cnn.*.temp/
+*.aocx
