@@ -24,20 +24,25 @@
 
 __kernel void cnn(__global float* input, __global float* weights, __global float* output)
 {
-	unsigned long to = get_global_id(0);
-	unsigned long row = get_global_id(1);
-	unsigned long col = get_global_id(2);
+	unsigned long too = get_global_id(0);
+	unsigned long roo = get_global_id(1);
+	unsigned long coo = get_global_id(2);
+	unsigned long ti, row, col, to;
 
-	unsigned long ti;
-	
-	for(ti=0; ti<N_ifm; ti++) {
-		unsigned long i, j;
-	  	for(i=0; i<K_wts; i++) {
-	    	for(j=0; j<K_wts; j++) {
-	      		ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) +=
-				ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts)*
-				ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm);
-	    	}
-	  	}
+	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
+		for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
+			for(to=too; to<(too+Tm, M_ofm); to++) {
+				for(ti=0; ti<N_ifm; ti++) {
+					unsigned long i, j;
+					for(i=0; i<K_wts; i++) {
+						for(j=0; j<K_wts; j++) {
+							ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) +=
+							ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts)*
+							ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm);
+						}
+					}
+				}
+			}
+		}
 	}
 }
