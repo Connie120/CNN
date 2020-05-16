@@ -84,9 +84,9 @@
 /*
  * Blocking parameters
  */
-#define Tr 32 // output row
-#define Tc 32 // output column
-#define Tm 2 // output depth
+#define Tr 16 // output row
+#define Tc 16 // output column
+#define Tm 128 // output depth
 #define Tn 6  // input depth
 
 #endif
