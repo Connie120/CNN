@@ -31,7 +31,7 @@ __kernel void cnn(__global float* input, __global float* weights, __global float
 
 	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
 		for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
-			for(to=too; to<(too+Tm, M_ofm); to++) {
+			for(to=too; to<MIN(too+Tm, M_ofm); to++) {
 				for(ti=0; ti<N_ifm; ti++) {
 					unsigned long i, j;
 					for(i=0; i<K_wts; i++) {
