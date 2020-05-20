@@ -24,9 +24,9 @@
 
 __kernel void cnn(__global float* input, __global float* weights, __global float* output)
 {
-	unsigned long too = get_global_id(0);
-	unsigned long roo = get_global_id(1);
-	unsigned long coo = get_global_id(2);
+	unsigned long too = get_global_id(0) * Tm;
+	unsigned long roo = get_global_id(1) * Tr;
+	unsigned long coo = get_global_id(2) * Tc;
 	unsigned long ti, row, col, to;
 
 	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
