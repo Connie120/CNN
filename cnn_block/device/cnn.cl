@@ -24,9 +24,9 @@
 
 __kernel void cnn(__global float* input, __global float* weights, __global float* output)
 {
-	unsigned long to = get_global_id(0) * Tm;
-	unsigned long row = get_global_id(1) * Tr;
-	unsigned long col = get_global_id(2) * Tc;
+	unsigned long to = get_global_id(0);
+	unsigned long row = get_global_id(1);
+	unsigned long col = get_global_id(2);
 	
 	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
 	__local float BufO[Tm][Tr][Tc];
