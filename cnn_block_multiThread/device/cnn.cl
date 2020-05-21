@@ -22,7 +22,9 @@
 
 #include "../host/inc/instance.h"
 
-__kernel void cnn(__global float* input, __global float* weights, __global float* output)
+__kernel 
+__attribute((reqd_work_group_size(Tm, Tr, Tc)))
+void cnn(__global float* input, __global float* weights, __global float* output)
 {
 	unsigned long to = get_global_id(0);
 	unsigned long row = get_global_id(1);
