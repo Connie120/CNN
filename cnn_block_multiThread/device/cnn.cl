@@ -69,8 +69,8 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 	    
 			// Load one block for each thread, and there might be some overlaps
 			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
-				for(xrr=row*S_wts,irr=0;xrr<(row*S_wts+K_wts);xrr++,irr++){
-					for(xcc=col*S_wts,icc=0;xcc<(col*S_wts+K_wts);xcc++,icc++){
+				for(xrr=row*S_wts,irr=local_r*S_wts;xrr<(row*S_wts+K_wts);xrr++,irr++){
+					for(xcc=col*S_wts,icc=local_c*S_wts;xcc<(col*S_wts+K_wts);xcc++,icc++){
 						BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
 					}
 				}
