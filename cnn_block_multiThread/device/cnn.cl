@@ -142,15 +142,6 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 		* from local to full buffer
 		*/
 
-			// indices internal to the block: count from 0                                       
-			unsigned long ioo, icc, irr;
-
-		for(too=to,ioo=0;too<MIN(to+Tm,M_ofm);too++,ioo++){
-			for(trr=row,irr=0;trr<MIN(row+Tr,R_ofm);trr++,irr++){
-				for(tcc=col,icc=0;tcc<MIN(col+Tc,C_ofm);tcc++,icc++){
-					ARRAY(output,0,too,trr,tcc,0,M_ofm,R_ofm,C_ofm)=BufO[ioo][irr][icc];
-				}
-			}
-		}
+		ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)=BufO[local_m][local_r][local_c];
 	}
 }
