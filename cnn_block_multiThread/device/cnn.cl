@@ -75,7 +75,7 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 						BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
 						printf("%f ", BufI[iii][irr][icc]);
 					}
-					printf("\n);
+					printf("\n");
 				}
 			}
 
