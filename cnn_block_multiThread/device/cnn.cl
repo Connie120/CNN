@@ -67,12 +67,15 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 			// incremented temporary indices for input row and col
 			unsigned long xrr, xcc;
 	    
+			printf("input\n");
 			// Load one block for each thread, and there might be some overlaps
 			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
 				for(xrr=row*S_wts,irr=local_r*S_wts;xrr<(row*S_wts+K_wts);xrr++,irr++){
 					for(xcc=col*S_wts,icc=local_c*S_wts;xcc<(col*S_wts+K_wts);xcc++,icc++){
 						BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
+						printf("%f ", BufI[iii][irr][icc]);
 					}
+					printf("\n);
 				}
 			}
 
@@ -88,11 +91,14 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 				// indices internal to the block: count from 0                                     
 			unsigned long iii, irr, icc;
 
+			printf("weight\n");
 			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
 				for(irr=0;irr<K_wts;irr++) {
 					for(icc=0;icc<K_wts;icc++) {
 						BufW[local_m][iii][irr][icc]=ARRAY(weights,to,tii,irr,icc,M_ofm,N_ifm,K_wts,K_wts);
+						printf("%f ", BufW[local_m][iii][irr][icc]);
 					}
+					printf("\n");
 				}
 			}
 		
