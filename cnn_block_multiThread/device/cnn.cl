@@ -37,7 +37,7 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 
 	unsigned long ioo, icc, irr;
 	
-	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
+	__local float BufI[Tn][Tr*S_wts+K_wts-S_wts][Tc*S_wts+K_wts-S_wts];
 	__local float BufO[Tm][Tr][Tc];
 	__local float BufW[Tm][Tn][K_wts][K_wts];
 
@@ -52,14 +52,14 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 		BufO[local_m][local_r][local_c]=0;
 
 		// Wait for the entire buffer to be initialized
-        barrier(CLK_LOCAL_MEM_FENCE);
+        // barrier(CLK_LOCAL_MEM_FENCE);
 	}
 
 	for(ti=0; ti<N_ifm; ti+=Tn) {
 		{
 			/*
-				* load active input feature map into local buffer
-				*/
+			* load active input feature map into local buffer
+			*/
 	    
 			// indices internal to the block: count from 0
 			unsigned long irr, icc, iii;
@@ -67,45 +67,51 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 			// incremented temporary indices for input row and col
 			unsigned long xrr, xcc;
 	    
+			// Load one block for each thread, and there might be some overlaps
 			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
-				for(xrr=row*S_wts,irr=0;xrr<(MIN(row+Tr,R_ofm)*S_wts+K_wts-1);xrr++,irr++){
-					for(xcc=col*S_wts,icc=0;xcc<(MIN(col+Tc,C_ofm)*S_wts+K_wts-1);xcc++,icc++){
+				for(xrr=row*S_wts,irr=0;xrr<(row*S_wts+K_wts);xrr++,irr++){
+					for(xcc=col*S_wts,icc=0;xcc<(col*S_wts+K_wts);xcc++,icc++){
 						BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
 					}
 				}
 			}
+
+			// Wait for the entire input matrix to be loaded
+			// barrier(CLK_LOCAL_MEM_FENCE);
 		}
 
 		{
 			/*
-				* load active weights into local buffer
-				*/
+			* load active weights into local buffer
+			*/
 
 				// indices internal to the block: count from 0                                     
-			unsigned long ioo, iii, irr, icc;
+			unsigned long iii, irr, icc;
 
-			for(too=to,ioo=0;too<MIN(to+Tm,M_ofm);too++,ioo++){
-				for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
+			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
 				for(irr=0;irr<K_wts;irr++) {
 					for(icc=0;icc<K_wts;icc++) {
-					BufW[ioo][iii][irr][icc]=ARRAY(weights,too,tii,irr,icc,M_ofm,N_ifm,K_wts,K_wts);
-					}
-				}
-				}
-	      
-				/* write 0s into over-run regions at the end;
-				* this way convolve_kernel() accumulates correctly
-				* without needing a special case */
-				if (iii<Tn) {
-					for(;iii<Tn;iii++) {
-						for(irr=0;irr<K_wts;irr++) {
-							for(icc=0;icc<K_wts;icc++) {
-								BufW[ioo][iii][irr][icc]=0;
-							}
-						}
+						BufW[local_m][iii][irr][icc]=ARRAY(weights,to,tii,irr,icc,M_ofm,N_ifm,K_wts,K_wts);
 					}
 				}
 			}
+		
+			/* write 0s into over-run regions at the end;
+			* this way convolve_kernel() accumulates correctly
+			* without needing a special case */
+			// Not needed for the FPGA version
+			/* if (iii<Tn) {
+				for(;iii<Tn;iii++) {
+					for(irr=0;irr<K_wts;irr++) {
+						for(icc=0;icc<K_wts;icc++) {
+							BufW[ioo][iii][irr][icc]=0;
+						}
+					}
+				}
+			} */
+
+			// Wait for all of the weight matrices to be loaded
+			// barrier(CLK_LOCAL_MEM_FENCE);
 		}
 
 		/*
@@ -120,17 +126,11 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 		unsigned long i, j;
 		for(i=0;i<K_wts;i++){
 			for(j=0;j<K_wts;j++){
-				for(row_b=0;row_b<Tr;row_b++){
-					for(col_b=0;col_b<Tc;col_b++){
-						for(to_b=0;to_b<Tm;to_b++){
-							#pragma unroll
-							for(ti_b=0;ti_b<Tn;ti_b++){
-								BufO[to_b][row_b][col_b]+=
-									BufW[to_b][ti_b][i][j]*
-									BufI[ti_b][S_wts*row_b+i][S_wts*col_b+j];
-							}
-						}
-					}
+				#pragma unroll
+				for(ti_b=0;ti_b<Tn;ti_b++){
+					BufO[local_m][local_r][local_c]+=
+						BufW[local_m][ti_b][i][j]*
+						BufI[ti_b][S_wts*local_r+i][S_wts*local_c+j];
 				}
 			}
 		}
@@ -148,7 +148,7 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 		for(too=to,ioo=0;too<MIN(to+Tm,M_ofm);too++,ioo++){
 			for(trr=row,irr=0;trr<MIN(row+Tr,R_ofm);trr++,irr++){
 				for(tcc=col,icc=0;tcc<MIN(col+Tc,C_ofm);tcc++,icc++){
-				ARRAY(output,0,too,trr,tcc,0,M_ofm,R_ofm,C_ofm)=BufO[ioo][irr][icc];
+					ARRAY(output,0,too,trr,tcc,0,M_ofm,R_ofm,C_ofm)=BufO[ioo][irr][icc];
 				}
 			}
 		}
