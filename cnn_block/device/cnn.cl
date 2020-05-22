@@ -121,7 +121,6 @@ __kernel void cnn(__global float* input, __global float* weights, __global float
 				for(row_b=0;row_b<Tr;row_b++){
 					for(col_b=0;col_b<Tc;col_b++){
 						for(to_b=0;to_b<Tm;to_b++){
-							#pragma unroll
 							for(ti_b=0;ti_b<Tn;ti_b++){
 								BufO[to_b][row_b][col_b]+=
 									BufW[to_b][ti_b][i][j]*
