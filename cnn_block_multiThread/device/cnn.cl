@@ -118,15 +118,15 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 			* this way convolve_kernel() accumulates correctly
 			* without needing a special case */
 			// Not needed for the FPGA version
-			/* if (iii<Tn) {
+			if (iii<Tn) {
 				for(;iii<Tn;iii++) {
 					for(irr=0;irr<K_wts;irr++) {
 						for(icc=0;icc<K_wts;icc++) {
-							BufW[ioo][iii][irr][icc]=0;
+							BufW[local_m][iii][irr][icc]=0;
 						}
 					}
 				}
-			} */
+			}
 
 			// Wait for all of the weight matrices to be loaded
 			// barrier(CLK_LOCAL_MEM_FENCE);
