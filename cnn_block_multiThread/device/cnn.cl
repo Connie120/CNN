@@ -117,7 +117,6 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 			/* write 0s into over-run regions at the end;
 			* this way convolve_kernel() accumulates correctly
 			* without needing a special case */
-			// Not needed for the FPGA version
 			if (iii<Tn) {
 				for(;iii<Tn;iii++) {
 					for(irr=0;irr<K_wts;irr++) {
