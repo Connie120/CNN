@@ -5,3 +5,5 @@ cnn.*.temp/
 *.aocr
 *.aoco
 cnn/
+common/
+*.aocx.tmp
