@@ -32,8 +32,8 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 	printf("global_id(1): %lu\n", get_global_id(1));
 	printf("global_id(2): %lu\n", get_global_id(2));
 	printf("too: %lu\n", to);
-	printf("roo: %lu\n", ro);
-	printf("coo: %lu\n", co);
+	printf("roo: %lu\n", row);
+	printf("coo: %lu\n", col);
 	
 	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
 	__local float BufO[Tm][Tr][Tc];
