@@ -160,7 +160,7 @@ void init_problem() {
     for(row=0; row<R_ifm; row++) {
         for(col=0; col<C_ifm ; col++) {
             for(ti=0; ti<N_ifm; ti++) {
-                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=((rand()%RANGE)/RANGE);
+                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=(((float)(rand()%RANGE))/RANGE);
             }
         }
     }
@@ -222,8 +222,8 @@ void run() {
     //
     // Events are used to ensure that the kernel is not launched until
     // the writes to the input buffers have completed.
-	const size_t global_work_size[3] = { M_ofm, R_ofm, C_ofm };
-	const size_t local_work_size[3] = { Tm, Tr, Tc };
+	const size_t global_work_size[3] = { M_ofm/Tm, R_ofm/Tr, C_ofm/Tc };
+	const size_t local_work_size[3] = { 1, 1, 1 };
 
     status = clEnqueueNDRangeKernel(queue, kernel, 3, NULL,
                                     global_work_size, local_work_size, 0, NULL, &kernel_event);
@@ -289,6 +289,8 @@ void verify() {
     for(to=0; to<M_ofm; to++) {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
+		printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
+		printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
                 assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
                                    ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
