@@ -30,10 +30,18 @@ void cnn(__global float* input, __global float* weights, __global float* output)
 	unsigned long row = get_global_id(1);
 	unsigned long col = get_global_id(2);
 
+	printf("to: %lu\n", to);
+	printf("row: %lu\n", row);
+	printf("col: %lu\n", col);
+
 	// indices internal to the block: count from 0
 	unsigned long local_m = get_local_id(0);
 	unsigned long local_r = get_local_id(1);
 	unsigned long local_c = get_local_id(2);
+
+	printf("local_m: %lu\n", local_m);
+	printf("local_r: %lu\n", local_r);
+	printf("local_c: %lu\n", local_c);
 
 	unsigned long ioo, icc, irr;
 	
