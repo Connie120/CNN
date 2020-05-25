@@ -22,7 +22,7 @@
 
 #include "../host/inc/instance.h"
 
-__kernel void cnn(__global float* input, __global float* weights, __global float* output)
+__kernel void cnn(__global float* restrict input, __global float* restrict weights, __global float* restrict output)
 {
 	unsigned long too = get_global_id(0) * Tm;
 	unsigned long roo = get_global_id(1) * Tr;
