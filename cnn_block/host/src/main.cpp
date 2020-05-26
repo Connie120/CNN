@@ -226,7 +226,7 @@ void run() {
 	const size_t local_work_size[3] = { 1, 1, 1 };
 
     status = clEnqueueNDRangeKernel(queue, kernel, 3, NULL,
-                                    global_work_size, local_work_size, 0, NULL, &kernel_event);
+                                    global_work_size, NULL, 0, NULL, &kernel_event);
     checkError(status, "Failed to launch kernel");
 
     // Wait for all kernels to finish.
