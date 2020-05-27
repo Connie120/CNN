@@ -295,7 +295,7 @@ void verify() {
 		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
                 }
                 //assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
+                //                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
     }
