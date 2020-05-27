@@ -27,17 +27,10 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 	unsigned long to = get_global_id(0) * Tm;
 	unsigned long row = get_global_id(1) * Tr;
 	unsigned long col = get_global_id(2) * Tc;
-
-	printf("global_id(0): %lu\n", get_global_id(0));
-	printf("global_id(1): %lu\n", get_global_id(1));
-	printf("global_id(2): %lu\n", get_global_id(2));
-	printf("too: %lu\n", to);
-	printf("roo: %lu\n", row);
-	printf("coo: %lu\n", col);
 	
-	__private float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
-	__private float BufO[Tm][Tr][Tc];
-	__private float BufW[Tm][Tn][K_wts][K_wts];
+	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
+	__local float BufO[Tm][Tr][Tc];
+	__local float BufW[Tm][Tn][K_wts][K_wts];
 
 	unsigned long ti;
 
