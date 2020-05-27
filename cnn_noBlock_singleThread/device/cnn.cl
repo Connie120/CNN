@@ -22,11 +22,17 @@
 
 #include "../host/inc/instance.h"
 
-__kernel void cnn(__global float* input, __global float* weights, __global float* output)
+__kernel void cnn(__global float* restrict input, __global float* restrict weights, __global float* restrict output)
 {
 	unsigned long too = get_global_id(0) * Tm;
 	unsigned long roo = get_global_id(1) * Tr;
 	unsigned long coo = get_global_id(2) * Tc;
+	printf("global_id(0): %lu\n", get_global_id(0));
+	printf("global_id(1): %lu\n", get_global_id(1));
+	printf("global_id(2): %lu\n", get_global_id(2));
+	printf("too: %lu\n", too);
+	printf("roo: %lu\n", roo);
+	printf("coo: %lu\n", coo);
 	unsigned long ti, row, col, to;
 
 	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
