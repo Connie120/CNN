@@ -35,9 +35,9 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 	printf("roo: %lu\n", row);
 	printf("coo: %lu\n", col);
 	
-	__private float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
-	__private float BufO[Tm][Tr][Tc];
-	__private float BufW[Tm][Tn][K_wts][K_wts];
+	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
+	__local float BufO[Tm][Tr][Tc];
+	__local float BufW[Tm][Tn][K_wts][K_wts];
 
 	unsigned long ti;
 
