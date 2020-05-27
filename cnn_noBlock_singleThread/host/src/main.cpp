@@ -160,7 +160,7 @@ void init_problem() {
     for(row=0; row<R_ifm; row++) {
         for(col=0; col<C_ifm ; col++) {
             for(ti=0; ti<N_ifm; ti++) {
-                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=((rand()%RANGE)/RANGE);
+                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=(((float)(rand()%RANGE))/RANGE);
             }
         }
     }
