@@ -289,9 +289,12 @@ void verify() {
     for(to=0; to<M_ofm; to++) {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
-		printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
-		printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
-                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm))) {
+		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
+		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
+                }
+                //assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
                                    ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
