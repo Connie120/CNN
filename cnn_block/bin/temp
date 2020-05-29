@@ -16,57 +16,9 @@ init_opencl done.
 Generating input and weight matrices
 generating all inputs done
 init_problem done.
-roo: 0
-global_id(0): 0
-global_id(1): 0
-global_id(2): 0
-too: 0
-coo: 0
-roo: 0
-global_id(0): 1
-global_id(1): 0
-global_id(2): 0
-too: 64
-coo: 0
-roo: 8
-global_id(0): 0
-global_id(1): 1
-global_id(2): 0
-too: 0
-coo: 0
-roo: 8
-global_id(0): 1
-global_id(1): 1
-global_id(2): 0
-too: 64
-coo: 0
-roo: 0
-global_id(0): 0
-global_id(1): 0
-global_id(2): 1
-too: 0
-coo: 8
-roo: 0
-global_id(0): 1
-global_id(1): 0
-global_id(2): 1
-too: 64
-coo: 8
-roo: 8
-global_id(0): 0
-global_id(1): 1
-global_id(2): 1
-too: 0
-coo: 8
-roo: 8
-global_id(0): 1
-global_id(1): 1
-global_id(2): 1
-too: 64
-coo: 8
 
-Time: 3442.828 ms
-Kernel time (device 1): 3442.274 ms
+Time: 3516.442 ms
+Kernel time (device 1): 3516.428 ms
 
 Throughput: 0.04 GFLOPS
 

@@ -192,6 +192,10 @@ void run() {
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
+    //status = clEnqueueWriteBuffer(queue, output_buf, CL_FALSE,
+    //                                0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    //checkError(status, "Failed to transfer output");
+
     // Wait for all queues to finish.
     clFinish(queue);
 
