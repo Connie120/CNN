@@ -192,6 +192,10 @@ void run() {
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
+    status = clEnqueueWriteBuffer(queue, output_buf, CL_FALSE,
+                                   0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to transfer output");
+
     // Wait for all queues to finish.
     clFinish(queue);
 
@@ -226,11 +230,12 @@ void run() {
 	const size_t local_work_size[3] = { 1, 1, 1 };
 
     status = clEnqueueNDRangeKernel(queue, kernel, 3, NULL,
-                                    global_work_size, local_work_size, 0, NULL, &kernel_event);
+                                    global_work_size, NULL, 0, NULL, &kernel_event);
     checkError(status, "Failed to launch kernel");
 
     // Wait for all kernels to finish.
-    clWaitForEvents(num_devices, &kernel_event);
+    //clWaitForEvents(num_devices, &kernel_event);
+    clFinish(queue);
 
     const double end_time = getCurrentTimestamp();
     const double total_time = end_time - start_time;
@@ -249,13 +254,27 @@ void run() {
     // Release kernel events.
     clReleaseEvent(kernel_event);
 
+    printf("First verification\n");
     // Read the result.
     status = clEnqueueReadBuffer(queue, output_buf, CL_TRUE,
                                     0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
     checkError(status, "Failed to read output matrix");
 
+    clFinish(queue);
+
     // Verify results.
     ZhangIsfpga15_1_fp(dt_input, ref_output, dt_weights);
+    verify();
+
+    printf("Second verification\n");
+    // Read the result.
+    status = clEnqueueReadBuffer(queue, output_buf, CL_TRUE,
+                                    0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to read output matrix");
+
+    clFinish(queue);
+
+    // Verify results.
     verify();
 }
 
@@ -289,10 +308,13 @@ void verify() {
     for(to=0; to<M_ofm; to++) {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
-                printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
-		        printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
-                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
+                if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm))) {
+		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
+		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
+                }
+                //assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                //                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
     }

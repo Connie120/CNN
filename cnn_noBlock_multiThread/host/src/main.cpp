@@ -192,9 +192,9 @@ void run() {
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
-    //status = clEnqueueWriteBuffer(queue, output_buf, CL_FALSE,
-    //                                0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
-    //checkError(status, "Failed to transfer output");
+    status = clEnqueueWriteBuffer(queue, output_buf, CL_FALSE,
+                                   0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to transfer output");
 
     // Wait for all queues to finish.
     clFinish(queue);
@@ -258,8 +258,17 @@ void run() {
                                     0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
     checkError(status, "Failed to read output matrix");
 
+    printf("First verification");
     // Verify results.
     ZhangIsfpga15_1_fp(dt_input, ref_output, dt_weights);
+    verify();
+
+    printf("Second verification");
+    status = clEnqueueReadBuffer(queue, output_buf, CL_TRUE,
+                                    0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to read output matrix");
+
+    // Verify results.
     verify();
 }
 
