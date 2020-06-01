@@ -226,7 +226,7 @@ void run() {
     //
     // Events are used to ensure that the kernel is not launched until
     // the writes to the input buffers have completed.
-	const size_t global_work_size[3] = { M_ofm/Tm, R_ofm/Tr, C_ofm/Tc };
+	const size_t global_work_size[3] = { M_ofm/Tm+(M_ofm%Tm)?1:0, R_ofm/Tr+( R_ofm%Tr )?1:0, C_ofm/Tc+( C_ofm%Tc )?1:0 };
 	const size_t local_work_size[3] = { 1, 1, 1 };
 
     status = clEnqueueNDRangeKernel(queue, kernel, 3, NULL,

@@ -25,8 +25,8 @@
 __kernel void cnn(__global float* input, __global float* weights, __global float* restrict output)
 {
 	printf("Tm: %lu\n", Tm);
-	printf("Tm: %lu\n", Tr);
-	printf("Tm: %lu\n", Tc);
+	printf("Tr: %lu\n", Tr);
+	printf("Tc: %lu\n", Tc);
 	unsigned long too = get_global_id(0) * Tm;
 	unsigned long roo = get_global_id(1) * Tr;
 	unsigned long coo = get_global_id(2) * Tc;
