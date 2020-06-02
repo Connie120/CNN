@@ -28,6 +28,11 @@ float* dt_weights = (float*)malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
 float* ref_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
+cl_int Tm = 4;
+cl_int Tr = 4;
+cl_int Tc = 4;
+cl_int Tn = 8;
+
 // Function prototypes
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
 int nearlyEqual(float a, float b);
@@ -35,7 +40,6 @@ bool init_opencl();
 void init_problem();
 void run();
 void verify();
-void verifyZeros();
 void cleanup();
 
 // Entry point.
@@ -43,6 +47,9 @@ int main(int argc, char **argv) {
 	printf("R_ofm: %d\n", R_ofm);
 	printf("C_ofm: %d\n", C_ofm);
 	printf("M_ofm: %d\n", M_ofm);
+    printf("max_Tr: %d\n", max_Tr);	
+	printf("max_Tc: %d\n", max_Tc);
+	printf("max_Tm: %d\n", max_Tm);
 	printf("Tr: %d\n", Tr);	
 	printf("Tc: %d\n", Tc);
 	printf("Tm: %d\n", Tm);
@@ -71,6 +78,8 @@ bool init_opencl() {
     cl_int status;
 
     printf("Initializing OpenCL\n");
+
+    assert(Tm <= max_Tm && Tr <= max_Tr && Tc <= max_Tc && Tn <= max_Tn);
 
     if(!setCwdToExeDir()) {
         return false;
@@ -185,27 +194,16 @@ void run() {
     // Transfer inputs to each device. Each of the host buffers supplied to
     // clEnqueueWriteBuffer here is already aligned to ensure that DMA is used
     // for the host-to-device transfer.
-    status = clEnqueueWriteBuffer(queue, input_buf, CL_TRUE,
+    status = clEnqueueWriteBuffer(queue, input_buf, CL_FALSE,
                                     0, N_ifm * R_ifm * C_ifm * sizeof(float), dt_input, 0, NULL, NULL);
     checkError(status, "Failed to transfer input");
 
-    status = clEnqueueWriteBuffer(queue, weight_buf, CL_TRUE,
+    status = clEnqueueWriteBuffer(queue, weight_buf, CL_FALSE,
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
-    // status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
-    //                                0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
-    // checkError(status, "Failed to transfer output");
-
     // Wait for all queues to finish.
     clFinish(queue);
-
-    // Check that output should be 0s before kernel computation
-    // status = clEnqueueReadBuffer(queue, output_buf, CL_TRUE,
-    //                                 0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
-    // checkError(status, "Failed to read output matrix");
-
-    // verifyZeros();
 
     // Launch kernels.
     // This is the portion of time that we'll be measuring for throughput
@@ -223,6 +221,18 @@ void run() {
     checkError(status, "Failed to set argument %d", argi - 1);
 
     status = clSetKernelArg(kernel, argi++, sizeof(cl_mem), &output_buf);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tr);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tc);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tn);
     checkError(status, "Failed to set argument %d", argi - 1);
 
     // Enqueue kernel.
@@ -266,7 +276,6 @@ void run() {
                                     0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
     checkError(status, "Failed to read output matrix");
 
-    printf("First verification");
     // Verify results.
     ZhangIsfpga15_1_fp(dt_input, ref_output, dt_weights);
     verify();
@@ -302,40 +311,15 @@ void verify() {
     for(to=0; to<M_ofm; to++) {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
-                if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm))) {
-		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
-		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
-                }
-                //assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                //                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
+		        //printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
+		        //printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
+                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
     }
 
     printf("Results correct.\n\n");
-}
-
-void verifyZeros() {
-    printf("Verifying output if they are zeros\n");
-
-    unsigned long row, col, to;
-
-    for(to=0; to<M_ofm; to++) {
-        for(row=0; row<R_ofm; row++) {
-            for(col=0; col<C_ofm ; col++) {
-                if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   0)) {
-		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
-		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
-                }
-                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                  0));
-            }
-        }
-    }
-
-    printf("Output are correctly sent to the device!\n\n");
 }
 
 int nearlyEqual(float a, float b) {
