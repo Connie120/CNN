@@ -1,0 +1,750 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Bottleneck", "Details"]
+  , "children":
+  [
+    {
+      "name":"Kernel: cnn"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+            , "line":25
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"cnn.B1"
+          , "data":
+          ["No", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                , "line":46
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 43"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 43"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"Fully unrolled loop"
+              , "data":
+              ["n/a", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                    , "line":47
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Auto-unrolled"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Auto-unrolled"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Fully unrolled loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":48
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Auto-unrolled"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Auto-unrolled"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B3"
+          , "data":
+          ["No", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                , "line":56
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 1033"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 1033"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"cnn.B4"
+              , "data":
+              ["No", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                    , "line":68
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Thread capacity = 222"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Thread capacity = 222"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Coalesced loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":69
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Auto-coalesced"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Coalesced loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                            , "line":70
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Auto-coalesced"
+                        }
+                      ]
+                      , "children":
+                      [
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"cnn.B6"
+              , "data":
+              ["No", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                    , "line":85
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Thread capacity = 307"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Thread capacity = 307"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.B7"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":86
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 239"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 239"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Fully unrolled loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                            , "line":87
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"brief"
+                          , "text":"Auto-unrolled"
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Auto-unrolled"
+                        }
+                      ]
+                      , "children":
+                      [
+                        {
+                          "name":"Fully unrolled loop"
+                          , "data":
+                          ["n/a", "n/a", "n/a"]
+                          , "debug":
+                          [
+                            [
+                              {
+                                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                                , "line":88
+                              }
+                            ]
+                          ]
+                          , "details":
+                          [
+                            {
+                              "type":"brief"
+                              , "text":"Auto-unrolled"
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Auto-unrolled"
+                            }
+                          ]
+                          , "children":
+                          [
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.B9"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":98
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 44"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 44"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Fully unrolled loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                            , "line":99
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"brief"
+                          , "text":"Auto-unrolled"
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Auto-unrolled"
+                        }
+                      ]
+                      , "children":
+                      [
+                        {
+                          "name":"Fully unrolled loop"
+                          , "data":
+                          ["n/a", "n/a", "n/a"]
+                          , "debug":
+                          [
+                            [
+                              {
+                                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                                , "line":100
+                              }
+                            ]
+                          ]
+                          , "details":
+                          [
+                            {
+                              "type":"brief"
+                              , "text":"Auto-unrolled"
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Auto-unrolled"
+                            }
+                          ]
+                          , "children":
+                          [
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"cnn.B12"
+              , "data":
+              ["No", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                    , "line":119
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Thread capacity = 478"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Thread capacity = 478"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Coalesced loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":120
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Auto-coalesced"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Coalesced loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                            , "line":121
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Auto-coalesced"
+                        }
+                      ]
+                      , "children":
+                      [
+                        {
+                          "name":"Fully unrolled loop"
+                          , "data":
+                          ["n/a", "n/a", "n/a"]
+                          , "debug":
+                          [
+                            [
+                              {
+                                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                                , "line":122
+                              }
+                            ]
+                          ]
+                          , "details":
+                          [
+                            {
+                              "type":"brief"
+                              , "text":"Auto-unrolled"
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Auto-unrolled"
+                            }
+                          ]
+                          , "children":
+                          [
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.B13"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":123
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 101"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 101"
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Fully unrolled loop"
+                      , "data":
+                      ["n/a", "n/a", "n/a"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                            , "line":125
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"brief"
+                          , "text":"Unrolled by #pragma unroll"
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Unrolled by #pragma unroll"
+                        }
+                      ]
+                      , "children":
+                      [
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.B19"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":123
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 101"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 101"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+                , {
+                  "name":"cnn.B21"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":123
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 101"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 101"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+                , {
+                  "name":"cnn.B23"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":123
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Thread capacity = 101"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Thread capacity = 101"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B17"
+          , "data":
+          ["No", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                , "line":146
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 46"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 46"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"Coalesced loop"
+              , "data":
+              ["n/a", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                    , "line":147
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Auto-coalesced"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Coalesced loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/homes/connie/opencl/CNN/cnn_block/device/cnn.cl"
+                        , "line":148
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Auto-coalesced"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
