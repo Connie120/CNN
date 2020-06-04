@@ -28,6 +28,11 @@ float* dt_weights = (float*)malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
 float* ref_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
+cl_int Tm;
+cl_int Tr;
+cl_int Tc;
+cl_int Tn;
+
 // Function prototypes
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
 int nearlyEqual(float a, float b);
@@ -43,9 +48,21 @@ int main(int argc, char **argv) {
 	printf("R_ofm: %d\n", R_ofm);
 	printf("C_ofm: %d\n", C_ofm);
 	printf("M_ofm: %d\n", M_ofm);
-	printf("Tr: %d\n", Tr);	
+	// printf("Tr: %d\n", Tr);	
+	// printf("Tc: %d\n", Tc);
+	// printf("Tm: %d\n", Tm);
+
+    // Take inputs
+    Tm = atoi(argv[1]);
+    Tr = atoi(argv[2]);
+    Tc = atoi(argv[3]);
+    Tn = atoi(argv[4]);
+
+    printf("Tr: %d\n", Tr);	
 	printf("Tc: %d\n", Tc);
 	printf("Tm: %d\n", Tm);
+    printf("Tn: %d\n", Tn);
+
     // Initialize OpenCL.
     if(!init_opencl()) {
         return -1;
@@ -71,6 +88,8 @@ bool init_opencl() {
     cl_int status;
 
     printf("Initializing OpenCL\n");
+
+    // assert(Tm <= max_Tm && Tr <= max_Tr && Tc <= max_Tc && Tn <= max_Tn);
 
     if(!setCwdToExeDir()) {
         return false;
@@ -223,6 +242,18 @@ void run() {
     checkError(status, "Failed to set argument %d", argi - 1);
 
     status = clSetKernelArg(kernel, argi++, sizeof(cl_mem), &output_buf);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tr);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tc);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tn);
     checkError(status, "Failed to set argument %d", argi - 1);
 
     // Enqueue kernel.

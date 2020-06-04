@@ -28,10 +28,10 @@ float* dt_weights = (float*)malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
 float* ref_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
-cl_int Tm = 4;
-cl_int Tr = 4;
-cl_int Tc = 4;
-cl_int Tn = 8;
+cl_int Tm;
+cl_int Tr;
+cl_int Tc;
+cl_int Tn;
 
 // Function prototypes
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
@@ -50,19 +50,31 @@ int main(int argc, char **argv) {
     printf("max_Tr: %d\n", max_Tr);	
 	printf("max_Tc: %d\n", max_Tc);
 	printf("max_Tm: %d\n", max_Tm);
-	printf("Tr: %d\n", Tr);	
+
+    // printf("argc: %d\n", argc);
+    // printf("argv: %s\n", argv[1]);
+
+    // Take inputs
+    Tm = atoi(argv[1]);
+    Tr = atoi(argv[2]);
+    Tc = atoi(argv[3]);
+    Tn = atoi(argv[4]);
+
+    printf("Tr: %d\n", Tr);	
 	printf("Tc: %d\n", Tc);
 	printf("Tm: %d\n", Tm);
+    printf("Tn: %d\n", Tn);
+
     // Initialize OpenCL.
     if(!init_opencl()) {
         return -1;
     }
-	printf("init_opencl done.\n");
+	//printf("init_opencl done.\n");
 
     // Initialize the problem data.
     // Requires the number of devices to be known.
     init_problem();
-	printf("init_problem done.\n");
+	//printf("init_problem done.\n");
 
     // Run the kernel.
     run();
@@ -77,7 +89,7 @@ int main(int argc, char **argv) {
 bool init_opencl() {
     cl_int status;
 
-    printf("Initializing OpenCL\n");
+    //printf("Initializing OpenCL\n");
 
     assert(Tm <= max_Tm && Tr <= max_Tr && Tc <= max_Tc && Tn <= max_Tn);
 
@@ -128,19 +140,19 @@ bool init_opencl() {
     input_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_1_INTELFPGA,
                                     N_ifm * R_ifm * C_ifm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for input");
-	printf("input buffer done\n");
+	//printf("input buffer done\n");
 
     // Weight buffer.
     weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_2_INTELFPGA,
                                     M_ofm * N_ifm * K_wts * K_wts * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for weights");
-	printf("weight buffer done\n");
+	//printf("weight buffer done\n");
 
     // Output buffer.
     output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_1_INTELFPGA,
                                     M_ofm * R_ofm * C_ofm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for output");
-	printf("output buffer done\n");
+	//printf("output buffer done\n");
 
     return true;
 }
@@ -152,7 +164,7 @@ void init_problem() {
     }
 
     // Generate input and weight matrices.
-    printf("Generating input and weight matrices\n");
+    //printf("Generating input and weight matrices\n");
 
     unsigned long row, col, to, ti;
 
@@ -185,7 +197,7 @@ void init_problem() {
             }
         }
     }
-	printf("generating all inputs done\n");
+	//printf("generating all inputs done\n");
 }
 
 void run() {

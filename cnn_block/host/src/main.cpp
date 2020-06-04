@@ -259,6 +259,19 @@ void run() {
     verify();
 }
 
+double compute_kernel_execution_time(cl_event &event, double &start_d, double &end_d)
+{
+    cl_ulong start, end;
+
+    clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_END,      sizeof(cl_ulong), &end,     NULL);
+    clGetEventProfilingInfo(event, CL_PROFILING_COMMAND_START,    sizeof(cl_ulong), &start,   NULL);
+
+    start_d = (double)1.0e-9 * start;
+    end_d   = (double)1.0e-9 * end;
+
+    return    (double)1.0e-9 * (end - start); // nanoseconds to seconds
+}
+
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights) {
     printf("Computing reference output\n");
     unsigned long row, col, to, ti;
