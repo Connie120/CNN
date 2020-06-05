@@ -356,12 +356,12 @@ void verifyZeros() {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
                 if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   0)) {
+                                   -500)) {
 		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
 		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
                 }
                 assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                  0));
+                                  -500));
             }
         }
     }
