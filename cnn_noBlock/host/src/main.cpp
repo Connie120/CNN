@@ -141,13 +141,13 @@ bool init_opencl() {
 	printf("input buffer done\n");
 
     // Weight buffer.
-    weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_2_INTELFPGA,
+    weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_1_INTELFPGA,
                                     M_ofm * N_ifm * K_wts * K_wts * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for weights");
 	printf("weight buffer done\n");
 
     // Output buffer.
-    output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_1_INTELFPGA,
+    output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_2_INTELFPGA,
                                     M_ofm * R_ofm * C_ofm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for output");
 	printf("output buffer done\n");
@@ -212,9 +212,9 @@ void run() {
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
-    // status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
-    //                                0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
-    // checkError(status, "Failed to transfer output");
+    status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
+                                   0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to transfer output");
 
     // Wait for all queues to finish.
     clFinish(queue);

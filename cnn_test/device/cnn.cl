@@ -38,18 +38,27 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 	printf("coo: %lu\n", coo);
 	unsigned long ti, row, col, to;
 
-	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
-		for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
-			for(to=too; to<MIN(too+Tm, M_ofm); to++) {
-				ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = 500.0f;
-			}
-		}
-	}
+	// for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
+	// 	for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
+	// 		for(to=too; to<MIN(too+Tm, M_ofm); to++) {
+	// 			ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = 0.0f;
+	// 		}
+	// 	}
+	// }
 
 	for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
 		for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
 			for(to=too; to<MIN(too+Tm, M_ofm); to++) {
-				ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = -ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm);
+				ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = 0.0f;
+				for(ti=0; ti<N_ifm; ti++) {
+					unsigned long i, j;
+					for(i=0; i<K_wts; i++) {
+						for(j=0; j<K_wts; j++) {
+							ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) +=
+							ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts);
+						}
+					}
+				}
 			}
 		}
 	}

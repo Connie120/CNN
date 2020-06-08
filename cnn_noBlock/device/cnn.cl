@@ -28,16 +28,16 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 	//printf("Tm: %ld\n", Tm);
 	//printf("Tr: %lu\n", Tr);
 	//printf("Tc: %lu\n", Tc);
-	unsigned long too = get_global_id(0) * Tm;
-	unsigned long roo = get_global_id(1) * Tr;
-	unsigned long coo = get_global_id(2) * Tc;
-	printf("global_id(0): %lu\n", get_global_id(0));
-	printf("global_id(1): %lu\n", get_global_id(1));
-	printf("global_id(2): %lu\n", get_global_id(2));
-	printf("too: %lu\n", too);
-	printf("roo: %lu\n", roo);
-	printf("coo: %lu\n", coo);
-	unsigned long ti, row, col, to;
+	int too = get_global_id(0) * Tm;
+	int roo = get_global_id(1) * Tr;
+	int coo = get_global_id(2) * Tc;
+	// printf("global_id(0): %lu\n", get_global_id(0));
+	// printf("global_id(1): %lu\n", get_global_id(1));
+	// printf("global_id(2): %lu\n", get_global_id(2));
+	// printf("too: %lu\n", too);
+	// printf("roo: %lu\n", roo);
+	// printf("coo: %lu\n", coo);
+	int ti, row, col, to;
 
 	// for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
 	// 	for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
@@ -52,7 +52,7 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 			for(to=too; to<MIN(too+Tm, M_ofm); to++) {
 				ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = 0.0f;
 				for(ti=0; ti<N_ifm; ti++) {
-					unsigned long i, j;
+					int i, j;
 					for(i=0; i<K_wts; i++) {
 						for(j=0; j<K_wts; j++) {
 							ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) += 
