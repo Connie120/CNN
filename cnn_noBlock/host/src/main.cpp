@@ -9,6 +9,20 @@
 
 using namespace aocl_utils;
 
+#define ACL_ALIGNMENT 64
+
+void* acl_aligned_malloc (size_t size) {
+    void *result = NULL;
+    if (posix_memalign(&result, ACL_ALIGNMENT, size) != 0)
+        printf("acl_aligned_malloc() failed.\n");
+    return result;
+}
+void acl_aligned_free (void *ptr) {
+    free (ptr);
+}
+
+// extern CL_API_ENTRY cl_int CL_API_CALL;
+
 // OpenCL runtime configuration
 cl_platform_id platform = NULL;
 unsigned num_devices = 0;
@@ -22,16 +36,11 @@ cl_mem input_buf; // num_devices elements
 cl_mem weight_buf;
 cl_mem output_buf; // num_devices elements
 
-float* dt_input = (float*)malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
-float* dt_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
-float* dt_weights = (float*)malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
+float* dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
+float* dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+float* dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
-float* ref_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
-
-cl_int Tm;
-cl_int Tr;
-cl_int Tc;
-cl_int Tn;
+float* ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
 // Function prototypes
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
@@ -53,10 +62,10 @@ int main(int argc, char **argv) {
 	// printf("Tm: %d\n", Tm);
 
     // Take inputs
-    Tm = atoi(argv[1]);
-    Tr = atoi(argv[2]);
-    Tc = atoi(argv[3]);
-    Tn = atoi(argv[4]);
+    // Tm = atoi(argv[1]);
+    // Tr = atoi(argv[2]);
+    // Tc = atoi(argv[3]);
+    // Tn = atoi(argv[4]);
 
     printf("Tr: %d\n", Tr);	
 	printf("Tc: %d\n", Tc);
@@ -141,13 +150,13 @@ bool init_opencl() {
 	printf("input buffer done\n");
 
     // Weight buffer.
-    weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_1_INTELFPGA,
+    weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_2_INTELFPGA,
                                     M_ofm * N_ifm * K_wts * K_wts * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for weights");
 	printf("weight buffer done\n");
 
     // Output buffer.
-    output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_2_INTELFPGA,
+    output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_1_INTELFPGA,
                                     M_ofm * R_ofm * C_ofm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for output");
 	printf("output buffer done\n");
@@ -244,17 +253,17 @@ void run() {
     status = clSetKernelArg(kernel, argi++, sizeof(cl_mem), &output_buf);
     checkError(status, "Failed to set argument %d", argi - 1);
 
-    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tm);
-    checkError(status, "Failed to set argument %d", argi - 1);
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tm);
+    // checkError(status, "Failed to set argument %d", argi - 1);
 
-    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tr);
-    checkError(status, "Failed to set argument %d", argi - 1);
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tr);
+    // checkError(status, "Failed to set argument %d", argi - 1);
 
-    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tc);
-    checkError(status, "Failed to set argument %d", argi - 1);
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tc);
+    // checkError(status, "Failed to set argument %d", argi - 1);
 
-    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tn);
-    checkError(status, "Failed to set argument %d", argi - 1);
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tn);
+    // checkError(status, "Failed to set argument %d", argi - 1);
 
     // Enqueue kernel.
     // Use a global work size corresponding to the size of the output matrix.
@@ -271,6 +280,8 @@ void run() {
     status = clEnqueueNDRangeKernel(queue, kernel, 3, NULL,
                                     global_work_size, NULL, 0, NULL, &kernel_event);
     checkError(status, "Failed to launch kernel");
+
+    clGetProfileInfoIntelFPGA(kernel_event);
 
     // Wait for all kernels to finish.
     clWaitForEvents(num_devices, &kernel_event);

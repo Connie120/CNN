@@ -22,15 +22,15 @@
 
 #include "../host/inc/instance.h"
 
-__kernel void cnn(__global float* restrict input, __global float* restrict weights, __global float* restrict output)
+__kernel void cnn(__global float* input, __global float* weights, __global float* output)
 {
 	unsigned long to = get_global_id(0) * Tm;
 	unsigned long row = get_global_id(1) * Tr;
 	unsigned long col = get_global_id(2) * Tc;
 	
-	// __local float BufI[max_Tn][max_Tr*S_wts+K_wts-1][max_Tc*S_wts+K_wts-1];
+	__local float BufI[Tn][Tr*S_wts+K_wts-1][Tc*S_wts+K_wts-1];
 	__local float BufO[Tm][Tr][Tc];
-	// __local float BufW[max_Tm][max_Tn][K_wts][K_wts];
+	__local float BufW[Tm][Tn][K_wts][K_wts];
 
 	unsigned long ti;
 
@@ -60,18 +60,18 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 				*/
 	    
 			// indices internal to the block: count from 0
-			// unsigned long irr, icc, iii;
+			unsigned long irr, icc, iii;
 
-			// // incremented temporary indices for input row and col
-			// unsigned long xrr, xcc;
+			// incremented temporary indices for input row and col
+			unsigned long xrr, xcc;
 	    
-			// for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
-			// 	for(xrr=row*S_wts,irr=0;xrr<(MIN(row+Tr,R_ofm)*S_wts+K_wts-1);xrr++,irr++){
-			// 		for(xcc=col*S_wts,icc=0;xcc<(MIN(col+Tc,C_ofm)*S_wts+K_wts-1);xcc++,icc++){
-			// 			BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
-			// 		}
-			// 	}
-			// }
+			for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
+				for(xrr=row*S_wts,irr=0;xrr<(MIN(row+Tr,R_ofm)*S_wts+K_wts-1);xrr++,irr++){
+					for(xcc=col*S_wts,icc=0;xcc<(MIN(col+Tc,C_ofm)*S_wts+K_wts-1);xcc++,icc++){
+						BufI[iii][irr][icc]=ARRAY(input,0,tii,xrr,xcc,0,N_ifm,R_ifm,C_ifm);
+					}
+				}
+			}
 		}
 
 		{
@@ -80,30 +80,30 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 				*/
 
 				// indices internal to the block: count from 0                                     
-			// unsigned long ioo, iii, irr, icc;
+			unsigned long ioo, iii, irr, icc;
 
-			// for(too=to,ioo=0;too<MIN(to+Tm,M_ofm);too++,ioo++){
-			// 	for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
-			// 		for(irr=0;irr<K_wts;irr++) {
-			// 			for(icc=0;icc<K_wts;icc++) {
-			// 				BufW[ioo][iii][irr][icc]=ARRAY(weights,too,tii,irr,icc,M_ofm,N_ifm,K_wts,K_wts);
-			// 			}
-			// 		}
-			// 	}
+			for(too=to,ioo=0;too<MIN(to+Tm,M_ofm);too++,ioo++){
+				for(tii=ti,iii=0;tii<MIN(ti+Tn,N_ifm);tii++,iii++){
+					for(irr=0;irr<K_wts;irr++) {
+						for(icc=0;icc<K_wts;icc++) {
+							BufW[ioo][iii][irr][icc]=ARRAY(weights,too,tii,irr,icc,M_ofm,N_ifm,K_wts,K_wts);
+						}
+					}
+				}
 	      
-			// 	/* write 0s into over-run regions at the end;
-			// 	* this way convolve_kernel() accumulates correctly
-			// 	* without needing a special case */
-			// 	if (iii<Tn) {
-			// 		for(;iii<Tn;iii++) {
-			// 			for(irr=0;irr<K_wts;irr++) {
-			// 				for(icc=0;icc<K_wts;icc++) {
-			// 					BufW[ioo][iii][irr][icc]=0;
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// }
+				/* write 0s into over-run regions at the end;
+				* this way convolve_kernel() accumulates correctly
+				* without needing a special case */
+				if (iii<Tn) {
+					for(;iii<Tn;iii++) {
+						for(irr=0;irr<K_wts;irr++) {
+							for(icc=0;icc<K_wts;icc++) {
+								BufW[ioo][iii][irr][icc]=0;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		/*
@@ -114,22 +114,21 @@ __kernel void cnn(__global float* restrict input, __global float* restrict weigh
 		*/
 		//convolve_kernel(bufW, BufI, BufO);
 		unsigned long to_b, ti_b, row_b, col_b;
-		unsigned long to_i, ti_i, row_i, col_i;
 
 		unsigned long i, j;
 		for(i=0;i<K_wts;i++){
 			for(j=0;j<K_wts;j++){
-				for(row_b=0,row_i=row;row_i<MIN(row+Tr,R_ofm);row_b++,row_i++){
-					for(col_b=0,col_i=col;col_i<MIN(col+Tc,C_ofm);col_b++,col_i++){
-						for(to_b=0,to_i=to;to_i<MIN(to+Tm,M_ofm);to_b++,to_i++){
+				for(row_b=0;row_b<Tr;row_b++){
+					for(col_b=0;col_b<Tc;col_b++){
+						for(to_b=0;to_b<Tm;to_b++){
 							#pragma unroll
-							for(ti_b=0,ti_i=ti;ti_i<MIN(ti+Tn,N_ifm);ti_b++,ti_i++){
-								// BufO[to_b][row_b][col_b]+=
-								// 	BufW[to_b][ti_b][i][j]*
-								// 	BufI[ti_b][S_wts*row_b+i][S_wts*col_b+j];
+							for(ti_b=0;ti_b<Tn;ti_b++){
 								BufO[to_b][row_b][col_b]+=
-									ARRAY(weights,to_i,ti_i,i,j,M_ofm,N_ifm,K_wts,K_wts)*
-									ARRAY(input,0,ti_i,row_i*S_wts+i,col_i*S_wts+j,0,N_ifm,R_ifm,C_ifm);
+									BufW[to_b][ti_b][i][j]*
+									BufI[ti_b][S_wts*row_b+i][S_wts*col_b+j];
+								// BufO[to_b][row_b][col_b]+=
+								// 	ARRAY(weights,to_i,ti_i,i,j,M_ofm,N_ifm,K_wts,K_wts)*
+								// 	ARRAY(input,0,ti_i,row_i*S_wts+i,col_i*S_wts+j,0,N_ifm,R_ifm,C_ifm);
 							}
 						}
 					}
