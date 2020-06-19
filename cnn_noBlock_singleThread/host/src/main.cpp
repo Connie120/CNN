@@ -193,9 +193,9 @@ void run() {
                                     0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
-    // status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
-    //                                0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
-    // checkError(status, "Failed to transfer output");
+    status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
+                                   0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
+    checkError(status, "Failed to transfer output");
 
     // Wait for all queues to finish.
     clFinish(queue);
@@ -307,8 +307,8 @@ void verify() {
 		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
 		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
                 }
-                //assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                //                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
+                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                                  ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
     }

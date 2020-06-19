@@ -8,7 +8,7 @@ writer = csv.writer(w)
 
 for line in lines:
     if len(line.split()) != 0 and line.split()[0] == 'Kernel':
-        writer.writerow([sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], line.split(' ')[4]])
+        writer.writerow([sys.argv[1], sys.argv[2], sys.argv[3], line.split(' ')[4]])
         break
 
 f.close()
