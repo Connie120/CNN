@@ -21,6 +21,18 @@ void acl_aligned_free (void *ptr) {
     free (ptr);
 }
 
+#define ACL_ALIGNMENT 64
+
+void* acl_aligned_malloc (size_t size) {
+    void *result = NULL;
+    if (posix_memalign(&result, ACL_ALIGNMENT, size) != 0)
+        printf("acl_aligned_malloc() failed.\n");
+    return result;
+}
+void acl_aligned_free (void *ptr) {
+    free (ptr);
+}
+
 // extern CL_API_ENTRY cl_int CL_API_CALL;
 
 // OpenCL runtime configuration

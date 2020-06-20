@@ -9,6 +9,18 @@
 
 using namespace aocl_utils;
 
+#define ACL_ALIGNMENT 64
+
+void* acl_aligned_malloc (size_t size) {
+    void *result = NULL;
+    if (posix_memalign(&result, ACL_ALIGNMENT, size) != 0)
+        printf("acl_aligned_malloc() failed.\n");
+    return result;
+}
+void acl_aligned_free (void *ptr) {
+    free (ptr);
+}
+
 // OpenCL runtime configuration
 cl_platform_id platform = NULL;
 unsigned num_devices = 0;
