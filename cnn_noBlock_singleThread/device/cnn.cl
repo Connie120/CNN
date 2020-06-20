@@ -22,7 +22,7 @@
 
 #include "../host/inc/instance.h"
 
-__kernel void cnn(__global float* const input, __global float* const weights, __global float* output)
+__kernel void cnn(__global float* const restrict input, __global float* const restrict weights, __global float* restrict output)
 {
 	//printf("Tm: %lu\n", Tm);
 	//printf("Tr: %lu\n", Tr);
@@ -36,7 +36,7 @@ __kernel void cnn(__global float* const input, __global float* const weights, __
 	//printf("too: %lu\n", too);
 	//printf("roo: %lu\n", roo);
 	//printf("coo: %lu\n", coo);
-	unsigned long too, roo, coo;
+	unsigned long too, roo, coo, tii;
 	unsigned long ti, row, col, to;
 
 	/*for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
@@ -49,7 +49,7 @@ __kernel void cnn(__global float* const input, __global float* const weights, __
 
 	for(roo=0; roo<R_ofm; roo+=Tr) {
 		for(coo=0; coo<C_ofm; coo+=Tc) {
-			for(too=0; too<M_ofm; too+=Tm) {
+			for(too=0; too<M_ofm; too+=Tm){
 				for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
 					for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
 						for(to=too; to<MIN(too+Tm, M_ofm); to++) {
