@@ -22,11 +22,11 @@ cl_mem input_buf; // num_devices elements
 cl_mem weight_buf;
 cl_mem output_buf; // num_devices elements
 
-float* dt_input = (float*)malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
-float* dt_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
-float* dt_weights = (float*)malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
+float* dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
+float* dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+float* dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
-float* ref_output = (float*)malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+float* ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
 // cl_int Tm;
 // cl_int Tr;
