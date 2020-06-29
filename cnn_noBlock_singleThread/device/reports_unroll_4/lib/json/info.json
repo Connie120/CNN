@@ -1,0 +1,8 @@
+{"name":"Info","rows":[
+{"classes":["info-table"],"name":"Project Name","data":["cnn"]},
+{"name":"Target Family, Device, Board","data":["Stratix 10, 1SX280HN2F43E2VG, dcp_bsp:pac_s10_dc"]},
+{"name":"AOC Version","data":["18.1.2 Build 277"]},
+{"name":"Quartus Version","data":["18.1.2 Build 277 Pro"]},
+{"name":"Command","data":["aoc -profile cnn.cl"]},
+{"name":"Reports Generated At","data":["Tue Jun 23 10:56:59 2020"]}
+]}

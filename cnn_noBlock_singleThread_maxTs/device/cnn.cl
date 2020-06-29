@@ -22,6 +22,7 @@
 
 #include "../host/inc/instance.h"
 
+__attribute((reqd_work_group_size(1, 1, 1)))
 __kernel void cnn(__global float* const restrict input, __global float* const restrict weights, __global float* restrict output, 
                     const int Tm, const int Tr, const int Tc, const int Tn)
 {
@@ -55,6 +56,7 @@ __kernel void cnn(__global float* const restrict input, __global float* const re
                     for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
                         for(to=too; to<MIN(too+Tm, M_ofm); to++) {
                             float running_sum = 0.0f;
+							#pragma unroll 8
                             for(ti=0; ti<N_ifm; ti++) {
                                 unsigned long i, j;
                                 for(i=0; i<K_wts; i++) {

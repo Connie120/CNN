@@ -1,0 +1,2173 @@
+{
+  "nodes":
+  [
+    {
+      "type":"kernel"
+      , "id":2
+      , "name":"cnn"
+      , "children":
+      [
+        {
+          "type":"bb"
+          , "id":3
+          , "name":"cnn.B0"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"2"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":4
+          , "name":"cnn.B1"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"12"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"16"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":5
+          , "name":"cnn.B2"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"12"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"15"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":6
+          , "name":"cnn.B3"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"15"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"14"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":7
+          , "name":"cnn.B4"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"10"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"13"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":8
+          , "name":"cnn.B5"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"11"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"12"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":9
+          , "name":"cnn.B6"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"14"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Entry to loop. "
+              , "Loops To":"55"
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":10
+          , "name":"cnn.B7"
+          , "children":
+          [
+            {
+              "type":"inst"
+              , "id":18
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":64
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"4096 bits"
+                  , "Type":"Burst-coalesced cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"391"
+                  , "Latency":"315"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":19
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":20
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":21
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":22
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":23
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":24
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":25
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":26
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":27
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":28
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":29
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":30
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":31
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":32
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":33
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":34
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":35
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":36
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":37
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":38
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":39
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":40
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":41
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":42
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":43
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":44
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":45
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":46
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":47
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":48
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":49
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":50
+              , "name":"Load"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":65
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"128 bits"
+                  , "Type":"Burst-coalesced non-aligned cached"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"392"
+                  , "Latency":"314"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":52
+              , "name":"loop"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":59
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Start Cycle":"0"
+                  , "Latency":"1"
+                  , "Loops To":"53"
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":53
+              , "name":"loop end"
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Start Cycle":"1098"
+                  , "Latency":"1"
+                }
+              ]
+            }
+          ]
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"1098"
+              , "II":"385"
+              , "Subloops":"No"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Loop is pipelined with II of 385. See Loops Analysis for more information."
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":11
+          , "name":"cnn.B8"
+          , "children":
+          [
+            {
+              "type":"inst"
+              , "id":51
+              , "name":"Store"
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/homes/connie/opencl/CNN/cnn_noBlock_multiThread/device/cnn.cl"
+                    , "line":69
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Width":"32 bits"
+                  , "Type":"Burst-coalesced"
+                  , "Stall-free":"No"
+                  , "Start Cycle":"11"
+                  , "Latency":"2"
+                  , "Reference":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Load-Store Units"
+                          , "link":"https://www.altera.com/documentation/mwh1391807516407.html#yeo1491314105959"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":54
+              , "name":"begin"
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Start Cycle":"0"
+                  , "Latency":"1"
+                }
+              ]
+            }
+            , {
+              "type":"inst"
+              , "id":55
+              , "name":"end"
+              , "details":
+              [
+                {
+                  "type":"table"
+                  , "Start Cycle":"13"
+                  , "Latency":"1"
+                }
+              ]
+            }
+          ]
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"13"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":12
+          , "name":"cnn.B9"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"0"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":13
+          , "name":"cnn.B10"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"0"
+              , "II":"1"
+              , "Subloops":"Yes"
+              , "Pipelined":"Yes"
+              , "Fmax Bottlenecks":"No"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":14
+          , "name":"cnn.B11"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"7"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":15
+          , "name":"cnn.B12"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"7"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":16
+          , "name":"cnn.B13"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"7"
+              , "II":"0"
+              , "Subloops":"Yes"
+              , "Pipelined":"No"
+              , "Fmax Bottlenecks":"Yes"
+              , "Loop Info":"Exit which branches back to loop. "
+            }
+          ]
+        }
+        , {
+          "type":"bb"
+          , "id":17
+          , "name":"cnn.B14"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Latency":"0"
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "type":"memtype"
+      , "id":1
+      , "name":"Global Memory"
+      , "children":
+      [
+        {
+          "type":"memsys"
+          , "id":56
+          , "name":"DDR"
+          , "details":
+          [
+            {
+              "type":"table"
+              , "Number of banks":"4"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  , "links":
+  [
+    {
+      "from":16
+      , "to":4
+    }
+    , {
+      "from":3
+      , "to":4
+    }
+    , {
+      "from":15
+      , "to":5
+    }
+    , {
+      "from":4
+      , "to":5
+    }
+    , {
+      "from":14
+      , "to":6
+    }
+    , {
+      "from":5
+      , "to":6
+    }
+    , {
+      "from":13
+      , "to":7
+    }
+    , {
+      "from":6
+      , "to":7
+    }
+    , {
+      "from":12
+      , "to":8
+    }
+    , {
+      "from":7
+      , "to":8
+    }
+    , {
+      "from":55
+      , "to":9
+    }
+    , {
+      "from":8
+      , "to":9
+    }
+    , {
+      "from":53
+      , "to":52
+    }
+    , {
+      "from":9
+      , "to":52
+    }
+    , {
+      "from":18
+      , "to":53
+    }
+    , {
+      "from":19
+      , "to":53
+    }
+    , {
+      "from":20
+      , "to":53
+    }
+    , {
+      "from":21
+      , "to":53
+    }
+    , {
+      "from":22
+      , "to":53
+    }
+    , {
+      "from":23
+      , "to":53
+    }
+    , {
+      "from":24
+      , "to":53
+    }
+    , {
+      "from":25
+      , "to":53
+    }
+    , {
+      "from":26
+      , "to":53
+    }
+    , {
+      "from":27
+      , "to":53
+    }
+    , {
+      "from":28
+      , "to":53
+    }
+    , {
+      "from":29
+      , "to":53
+    }
+    , {
+      "from":30
+      , "to":53
+    }
+    , {
+      "from":31
+      , "to":53
+    }
+    , {
+      "from":32
+      , "to":53
+    }
+    , {
+      "from":33
+      , "to":53
+    }
+    , {
+      "from":34
+      , "to":53
+    }
+    , {
+      "from":35
+      , "to":53
+    }
+    , {
+      "from":36
+      , "to":53
+    }
+    , {
+      "from":37
+      , "to":53
+    }
+    , {
+      "from":38
+      , "to":53
+    }
+    , {
+      "from":39
+      , "to":53
+    }
+    , {
+      "from":40
+      , "to":53
+    }
+    , {
+      "from":41
+      , "to":53
+    }
+    , {
+      "from":42
+      , "to":53
+    }
+    , {
+      "from":43
+      , "to":53
+    }
+    , {
+      "from":44
+      , "to":53
+    }
+    , {
+      "from":45
+      , "to":53
+    }
+    , {
+      "from":46
+      , "to":53
+    }
+    , {
+      "from":47
+      , "to":53
+    }
+    , {
+      "from":48
+      , "to":53
+    }
+    , {
+      "from":49
+      , "to":53
+    }
+    , {
+      "from":50
+      , "to":53
+    }
+    , {
+      "from":53
+      , "to":54
+    }
+    , {
+      "from":51
+      , "to":55
+    }
+    , {
+      "from":55
+      , "to":12
+    }
+    , {
+      "from":12
+      , "to":13
+    }
+    , {
+      "from":13
+      , "to":14
+    }
+    , {
+      "from":14
+      , "to":15
+    }
+    , {
+      "from":15
+      , "to":16
+    }
+    , {
+      "from":16
+      , "to":17
+    }
+    , {
+      "from":52
+      , "to":18
+    }
+    , {
+      "from":52
+      , "to":19
+    }
+    , {
+      "from":52
+      , "to":20
+    }
+    , {
+      "from":52
+      , "to":21
+    }
+    , {
+      "from":52
+      , "to":22
+    }
+    , {
+      "from":52
+      , "to":23
+    }
+    , {
+      "from":52
+      , "to":24
+    }
+    , {
+      "from":52
+      , "to":25
+    }
+    , {
+      "from":52
+      , "to":26
+    }
+    , {
+      "from":52
+      , "to":27
+    }
+    , {
+      "from":52
+      , "to":28
+    }
+    , {
+      "from":52
+      , "to":29
+    }
+    , {
+      "from":52
+      , "to":30
+    }
+    , {
+      "from":52
+      , "to":31
+    }
+    , {
+      "from":52
+      , "to":32
+    }
+    , {
+      "from":52
+      , "to":33
+    }
+    , {
+      "from":52
+      , "to":34
+    }
+    , {
+      "from":52
+      , "to":35
+    }
+    , {
+      "from":52
+      , "to":36
+    }
+    , {
+      "from":52
+      , "to":37
+    }
+    , {
+      "from":52
+      , "to":38
+    }
+    , {
+      "from":52
+      , "to":39
+    }
+    , {
+      "from":52
+      , "to":40
+    }
+    , {
+      "from":52
+      , "to":41
+    }
+    , {
+      "from":52
+      , "to":42
+    }
+    , {
+      "from":52
+      , "to":43
+    }
+    , {
+      "from":52
+      , "to":44
+    }
+    , {
+      "from":52
+      , "to":45
+    }
+    , {
+      "from":52
+      , "to":46
+    }
+    , {
+      "from":52
+      , "to":47
+    }
+    , {
+      "from":52
+      , "to":48
+    }
+    , {
+      "from":52
+      , "to":49
+    }
+    , {
+      "from":52
+      , "to":50
+    }
+    , {
+      "from":54
+      , "to":51
+    }
+    , {
+      "from":56
+      , "to":48
+    }
+    , {
+      "from":56
+      , "to":32
+    }
+    , {
+      "from":56
+      , "to":23
+    }
+    , {
+      "from":56
+      , "to":26
+    }
+    , {
+      "from":56
+      , "to":29
+    }
+    , {
+      "from":56
+      , "to":35
+    }
+    , {
+      "from":56
+      , "to":38
+    }
+    , {
+      "from":51
+      , "to":56
+    }
+    , {
+      "from":56
+      , "to":19
+    }
+    , {
+      "from":56
+      , "to":22
+    }
+    , {
+      "from":56
+      , "to":33
+    }
+    , {
+      "from":56
+      , "to":42
+    }
+    , {
+      "from":56
+      , "to":24
+    }
+    , {
+      "from":56
+      , "to":27
+    }
+    , {
+      "from":56
+      , "to":30
+    }
+    , {
+      "from":56
+      , "to":45
+    }
+    , {
+      "from":56
+      , "to":36
+    }
+    , {
+      "from":56
+      , "to":39
+    }
+    , {
+      "from":56
+      , "to":18
+    }
+    , {
+      "from":56
+      , "to":40
+    }
+    , {
+      "from":56
+      , "to":37
+    }
+    , {
+      "from":56
+      , "to":43
+    }
+    , {
+      "from":56
+      , "to":21
+    }
+    , {
+      "from":56
+      , "to":46
+    }
+    , {
+      "from":56
+      , "to":31
+    }
+    , {
+      "from":56
+      , "to":34
+    }
+    , {
+      "from":56
+      , "to":28
+    }
+    , {
+      "from":56
+      , "to":25
+    }
+    , {
+      "from":56
+      , "to":50
+    }
+    , {
+      "from":56
+      , "to":47
+    }
+    , {
+      "from":56
+      , "to":44
+    }
+    , {
+      "from":56
+      , "to":41
+    }
+    , {
+      "from":56
+      , "to":49
+    }
+    , {
+      "from":56
+      , "to":20
+    }
+  ]
+}
