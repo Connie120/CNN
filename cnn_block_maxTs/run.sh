@@ -12,9 +12,9 @@ do
     do
         for (( k=4; k<=$Tc; k++ ))
         do
+            echo $i $j $k
             for (( m=1; m<=10; m++))
             do
-                echo $i $j $k $m
                 ./bin/host $i $j $k $Tn >> bin/temp
             done
             python parse.py $i $j $k $Tn
