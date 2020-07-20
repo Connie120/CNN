@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "opencl: custom build [cnn] {spirv64}",
+            "command": "ioc64",
+            "args": [
+                "-cmd=build",
+                "-device=gpu",
+                "-input=\"d:\\CMU\\research\\CNN\\cnn_noBlock_singleThread_maxTs\\device\\cnn.cl\"",
+                "-spirv64=\"d:\\CMU\\research\\CNN\\cnn_noBlock_singleThread_maxTs\\device\\cnn.spirv64\""
+            ],
+            "problemMatcher": [
+                "$opencl.common"
+            ],
+            "group": "build"
+        }
+    ]
+}
