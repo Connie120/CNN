@@ -106,9 +106,9 @@ void run() {
     cnn(dt_input, dt_weights, dt_output, Tm, Tr, Tc, Tn);
 
     auto finish = std::chrono::high_resolution_clock::now();
-    //std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count() << "ns\n";
+    // std::cout << "Kernel time: " << std::chrono::duration_cast<std::chrono::milliseconds>(finish-start).count() << "ms\n";
 
-    printf("Kernel time (device %d): %0.3f ms\n", 1, double((finish-start).count()) * 1e-6);
+    printf("Kernel time (device %d): %0.3f ms\n", 1, std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count() * 1e-6);
 
     // Compute the throughput (GFLOPS).
     // const float flops = (float)(2.0f * M_ofm * R_ofm * C_ofm * N_ifm * K_wts * K_wts / total_time);

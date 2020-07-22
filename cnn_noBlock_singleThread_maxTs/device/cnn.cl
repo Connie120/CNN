@@ -62,8 +62,8 @@ __kernel void cnn(__global char* const restrict input, __global char* const rest
                                 for(i=0; i<K_wts; i++) {
                                     for(j=0; j<K_wts; j++) {
                                         running_sum += 
-                                        ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts)*
-                                        ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm);
+                                        __burst_coalesced_cached_load(&ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts), 128)*
+                                        __burst_coalesced_cached_load(&ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm), 128);
                                     }
                                 }
                             }
