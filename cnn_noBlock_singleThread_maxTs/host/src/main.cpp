@@ -21,16 +21,6 @@ void acl_aligned_free (void *ptr) {
     free (ptr);
 }
 
-float toFloat(uint8_t x) {
-    return x / 255.0e2;
-}
-
-uint8_t fromFloat(float x) {
-    if (x < 1e-2) return 0;
-    if (x > 1) return 255;
-    return 255.0e2 * x; // this truncates; add 0.5 to round instead
-}
-
 // OpenCL runtime configuration
 cl_platform_id platform = NULL;
 unsigned num_devices = 0;
@@ -44,11 +34,11 @@ cl_mem input_buf; // num_devices elements
 cl_mem weight_buf;
 cl_mem output_buf; // num_devices elements
 
-uint8_t* dt_input = (uint8_t*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(uint8_t));
-uint8_t* dt_output = (uint8_t*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(uint8_t));
-uint8_t* dt_weights = (uint8_t*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(uint8_t));
+float* dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
+float* dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+float* dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
 
-uint8_t* ref_output = (uint8_t*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(uint8_t));
+float* ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
 cl_int Tm;
 cl_int Tr;
@@ -56,8 +46,8 @@ cl_int Tc;
 cl_int Tn;
 
 // Function prototypes
-void ZhangIsfpga15_1_fp(uint8_t *input, uint8_t *output, uint8_t *weights);
-int nearlyEqual(uint8_t a, uint8_t b);
+void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
+int nearlyEqual(float a, float b);
 bool init_opencl();
 void init_problem();
 void run();
@@ -157,19 +147,19 @@ bool init_opencl() {
 
     // Input buffer.
     input_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_1_INTELFPGA,
-                                    N_ifm * R_ifm * C_ifm * sizeof(uint8_t), NULL, &status);
+                                    N_ifm * R_ifm * C_ifm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for input");
 	//printf("input buffer done\n");
 
     // Weight buffer.
     weight_buf = clCreateBuffer(context, CL_MEM_READ_ONLY | CL_CHANNEL_2_INTELFPGA,
-                                    M_ofm * N_ifm * K_wts * K_wts * sizeof(uint8_t), NULL, &status);
+                                    M_ofm * N_ifm * K_wts * K_wts * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for weights");
 	//printf("weight buffer done\n");
 
     // Output buffer.
     output_buf = clCreateBuffer(context, CL_MEM_WRITE_ONLY | CL_CHANNEL_1_INTELFPGA,
-                                    M_ofm * R_ofm * C_ofm * sizeof(uint8_t), NULL, &status);
+                                    M_ofm * R_ofm * C_ofm * sizeof(float), NULL, &status);
     checkError(status, "Failed to create buffer for output");
 	//printf("output buffer done\n");
 
@@ -201,8 +191,7 @@ void init_problem() {
     for(row=0; row<R_ifm; row++) {
         for(col=0; col<C_ifm ; col++) {
             for(ti=0; ti<N_ifm; ti++) {
-                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=fromFloat(((float)(rand()%RANGE))/RANGE);
-                printf("%d\n", ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm));
+                ARRAY(dt_input,0,ti,row,col,0,N_ifm,R_ifm,C_ifm)=(((float)(rand()%RANGE))/RANGE);
             }
         }
     }
@@ -212,7 +201,7 @@ void init_problem() {
         for(ti=0; ti<N_ifm; ti++) {
             for(row=0; row<K_wts; row++) {
                 for(col=0; col<K_wts; col++) {
-                    ARRAY(dt_weights,to,ti,row,col,M_ofm,N_ifm,K_wts,K_wts) = fromFloat(((float)(rand()%RANGE))/RANGE);
+                    ARRAY(dt_weights,to,ti,row,col,M_ofm,N_ifm,K_wts,K_wts) = (((float)(rand()%RANGE))/RANGE);
                 }
             }
         }
@@ -227,15 +216,15 @@ void run() {
     // clEnqueueWriteBuffer here is already aligned to ensure that DMA is used
     // for the host-to-device transfer.
     status = clEnqueueWriteBuffer(queue, input_buf, CL_FALSE,
-                                    0, N_ifm * R_ifm * C_ifm * sizeof(uint8_t), dt_input, 0, NULL, NULL);
+                                    0, N_ifm * R_ifm * C_ifm * sizeof(float), dt_input, 0, NULL, NULL);
     checkError(status, "Failed to transfer input");
 
     status = clEnqueueWriteBuffer(queue, weight_buf, CL_FALSE,
-                                    0, M_ofm * N_ifm * K_wts * K_wts * sizeof(uint8_t), dt_weights, 0, NULL, NULL);
+                                    0, M_ofm * N_ifm * K_wts * K_wts * sizeof(float), dt_weights, 0, NULL, NULL);
     checkError(status, "Failed to transfer weight");
 
     status = clEnqueueWriteBuffer(queue, output_buf, CL_TRUE,
-                                   0, M_ofm * R_ofm * C_ofm * sizeof(uint8_t), dt_output, 0, NULL, NULL);
+                                   0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
     checkError(status, "Failed to transfer output");
 
     // Wait for all queues to finish.
@@ -309,7 +298,7 @@ void run() {
 
     // Read the result.
     status = clEnqueueReadBuffer(queue, output_buf, CL_TRUE,
-                                    0, M_ofm * R_ofm * C_ofm * sizeof(uint8_t), dt_output, 0, NULL, NULL);
+                                    0, M_ofm * R_ofm * C_ofm * sizeof(float), dt_output, 0, NULL, NULL);
     checkError(status, "Failed to read output matrix");
 
     // Verify results.
@@ -317,7 +306,7 @@ void run() {
     verify();
 }
 
-void ZhangIsfpga15_1_fp(uint8_t *input, uint8_t *output, uint8_t *weights) {
+void ZhangIsfpga15_1_fp(float *input, float *output, float *weights) {
     printf("Computing reference output\n");
     unsigned long row, col, to, ti;
 
@@ -331,7 +320,6 @@ void ZhangIsfpga15_1_fp(uint8_t *input, uint8_t *output, uint8_t *weights) {
                             ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) +=
                                     ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts)*
                                     ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm);
-                            printf("%d\n", ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
                         }
                     }
                 }
@@ -348,12 +336,12 @@ void verify() {
     for(to=0; to<M_ofm; to++) {
         for(row=0; row<R_ofm; row++) {
             for(col=0; col<C_ofm ; col++) {
-		        //if (!nearlyEqual((uint8_t)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
-                                   //ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm))) {
-		            //printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
-		            //printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
-                //}
-                assert(nearlyEqual((uint8_t)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+		        if (!nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
+                                   ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm))) {
+		            printf("to: %lu, row: %lu, col: %lu\n", to, row, col);
+		            printf("output: %f, ref: %f\n", ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm), ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm));
+                }
+                assert(nearlyEqual((float)ARRAY(dt_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm),
                                    ARRAY(ref_output,0,to,row,col,0,M_ofm,R_ofm,C_ofm)));
             }
         }
@@ -362,10 +350,10 @@ void verify() {
     printf("Results correct.\n\n");
 }
 
-int nearlyEqual(uint8_t a, uint8_t b) {
-    uint8_t absA = fabs(a);
-    uint8_t absB = fabs(b);
-    uint8_t diff = fabs(a - b);
+int nearlyEqual(float a, float b) {
+    float absA = fabs(a);
+    float absB = fabs(b);
+    float diff = fabs(a - b);
 
     if (a == b) { // shortcut, handles infinities
         return 1;

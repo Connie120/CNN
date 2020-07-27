@@ -1,0 +1,2506 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Speculated iterations", "Details"]
+  , "children":
+  [
+    {
+      "name":"Kernel: cnn"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+            , "line":26
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"Single work-item execution"
+        }
+        , {
+          "type":"text"
+          , "text":"Single work-item execution"
+        }
+        , {
+          "type":"text"
+          , "text":"Fmax bottlenck blocks: cnn.B4, cnn.B5, cnn.B6, cnn.B8, cnn.B19, cnn.B23, cnn.B27, cnn.B31, cnn.B35, cnn.B39, cnn.B43"
+        }
+        , {
+          "type":"text"
+          , "text":"Use the %L report to view more details"
+          , "links":
+          [
+            {
+              "view":"Fmax II Report"
+            }
+          ]
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"cnn.B1"
+          , "data":
+          ["No", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":52
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Out-of-order inner loop"
+            }
+            , {
+              "type":"text"
+              , "text":"Loop not pipelined due to:"
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Loop iteration ordering: iterations of inner loop shown may get out of order with respect to the listed inner loop, as the number of iterations of the listed inner loop may be different for different iterations of this loop."
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"cnn.B9 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B20 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B24 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B28 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B32 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B36 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B40 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"cnn.B44 (%L)"
+                      , "links":
+                      [
+                        {
+                          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                          , "line":"63"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+            , {
+              "type":"text"
+              , "text":"Hyper-Optimized loop structure: disabled."
+            }
+            , {
+              "type":"text"
+              , "text":"Stallable instruction: n/a"
+            }
+            , {
+              "type":"text"
+              , "text":"Maximum concurrent iterations: 1 due to not being pipelined"
+            }
+            , {
+              "type":"text"
+              , "text":"See %L for more information"
+              , "links":
+              [
+                {
+                  "guide":"Best Practices Guide : Nested Loops"
+                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                }
+              ]
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"cnn.B2"
+              , "data":
+              ["No", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                    , "line":53
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Out-of-order inner loop"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Loop not pipelined due to:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"Loop iteration ordering: iterations of inner loop shown may get out of order with respect to the listed inner loop, as the number of iterations of the listed inner loop may be different for different iterations of this loop."
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"cnn.B9 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B20 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B24 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B28 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B32 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B36 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B40 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"cnn.B44 (%L)"
+                          , "links":
+                          [
+                            {
+                              "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                              , "line":"63"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+                , {
+                  "type":"text"
+                  , "text":"Hyper-Optimized loop structure: disabled."
+                }
+                , {
+                  "type":"text"
+                  , "text":"Stallable instruction: n/a"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Maximum concurrent iterations: 1 due to not being pipelined"
+                }
+                , {
+                  "type":"text"
+                  , "text":"See %L for more information"
+                  , "links":
+                  [
+                    {
+                      "guide":"Best Practices Guide : Nested Loops"
+                      , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.B3"
+                  , "data":
+                  ["No", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Out-of-order inner loop"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Loop not pipelined due to:"
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Loop iteration ordering: iterations of inner loop shown may get out of order with respect to the listed inner loop, as the number of iterations of the listed inner loop may be different for different iterations of this loop."
+                          , "details":
+                          [
+                            {
+                              "type":"text"
+                              , "text":"cnn.B9 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B20 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B24 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B28 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B32 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B36 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B40 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"cnn.B44 (%L)"
+                              , "links":
+                              [
+                                {
+                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                  , "line":"63"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Hyper-Optimized loop structure: disabled."
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Stallable instruction: n/a"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Maximum concurrent iterations: 1 due to not being pipelined"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"See %L for more information"
+                      , "links":
+                      [
+                        {
+                          "guide":"Best Practices Guide : Nested Loops"
+                          , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                        }
+                      ]
+                    }
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"cnn.B4"
+                      , "data":
+                      ["Yes", ">=1", "6"]
+                      , "debug":
+                      [
+                        [
+                          {
+                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                            , "line":55
+                          }
+                        ]
+                      ]
+                      , "details":
+                      [
+                        {
+                          "type":"brief"
+                          , "text":" "
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Hyper-Optimized loop structure: enabled."
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Stallable instruction: n/a"
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                          , "details":
+                          [
+                            {
+                              "type":"text"
+                              , "text":"Use the %L viewer to estimate capacity"
+                              , "links":
+                              [
+                                {
+                                  "view":"Fmax II Report"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"See %L for more information"
+                          , "links":
+                          [
+                            {
+                              "guide":"Best Practices Guide : Nested Loops"
+                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                            }
+                          ]
+                        }
+                      ]
+                      , "children":
+                      [
+                        {
+                          "name":"cnn.B5"
+                          , "data":
+                          ["Yes", ">=1", "6"]
+                          , "debug":
+                          [
+                            [
+                              {
+                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                , "line":56
+                              }
+                            ]
+                          ]
+                          , "details":
+                          [
+                            {
+                              "type":"brief"
+                              , "text":" "
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Hyper-Optimized loop structure: enabled."
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Stallable instruction: n/a"
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                              , "details":
+                              [
+                                {
+                                  "type":"text"
+                                  , "text":"Use the %L viewer to estimate capacity"
+                                  , "links":
+                                  [
+                                    {
+                                      "view":"Fmax II Report"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                            , {
+                              "type":"text"
+                              , "text":"See %L for more information"
+                              , "links":
+                              [
+                                {
+                                  "guide":"Best Practices Guide : Nested Loops"
+                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                }
+                              ]
+                            }
+                          ]
+                          , "children":
+                          [
+                            {
+                              "name":"cnn.B6"
+                              , "data":
+                              ["Yes", ">=1", "6"]
+                              , "debug":
+                              [
+                                [
+                                  {
+                                    "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                    , "line":57
+                                  }
+                                ]
+                              ]
+                              , "details":
+                              [
+                                {
+                                  "type":"brief"
+                                  , "text":" "
+                                }
+                                , {
+                                  "type":"text"
+                                  , "text":"Hyper-Optimized loop structure: enabled."
+                                }
+                                , {
+                                  "type":"text"
+                                  , "text":"Stallable instruction: n/a"
+                                }
+                                , {
+                                  "type":"text"
+                                  , "text":"Maximum concurrent iterations: Capacity of loop"
+                                  , "details":
+                                  [
+                                    {
+                                      "type":"text"
+                                      , "text":"Use the %L viewer to estimate capacity"
+                                      , "links":
+                                      [
+                                        {
+                                          "view":"Fmax II Report"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                                , {
+                                  "type":"text"
+                                  , "text":"See %L for more information"
+                                  , "links":
+                                  [
+                                    {
+                                      "guide":"Best Practices Guide : Nested Loops"
+                                      , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                    }
+                                  ]
+                                }
+                              ]
+                              , "children":
+                              [
+                                {
+                                  "name":"8X Partially unrolled cnn.B7"
+                                  , "data":
+                                  ["No", "n/a", "n/a"]
+                                  , "debug":
+                                  [
+                                    [
+                                      {
+                                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                        , "line":60
+                                      }
+                                    ]
+                                  ]
+                                  , "details":
+                                  [
+                                    {
+                                      "type":"brief"
+                                      , "text":"Loop-carried dependency"
+                                    }
+                                    , {
+                                      "type":"text"
+                                      , "text":"Loop not pipelined due to Loop-carried dependency(ies):"
+                                    }
+                                    , {
+                                      "type":"text"
+                                      , "text":"Hyper-Optimized loop structure: disabled."
+                                    }
+                                    , {
+                                      "type":"text"
+                                      , "text":"Stallable instruction: n/a"
+                                    }
+                                    , {
+                                      "type":"text"
+                                      , "text":"Maximum concurrent iterations: 1 due to not being pipelined"
+                                    }
+                                    , {
+                                      "type":"text"
+                                      , "text":"See %L for more information"
+                                      , "links":
+                                      [
+                                        {
+                                          "guide":"Best Practices Guide : Nested Loops"
+                                          , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                  , "children":
+                                  [
+                                    {
+                                      "name":"cnn.B8"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B9. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B9"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B19"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B20. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B20"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B23"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B24. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B24"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B27"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B28. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B28"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B31"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B32. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B32"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B35"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B36. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B36"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B39"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B40. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B40"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                    , {
+                                      "name":"cnn.B43"
+                                      , "data":
+                                      ["Yes", ">=1", "9"]
+                                      , "debug":
+                                      [
+                                        [
+                                          {
+                                            "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                            , "line":62
+                                          }
+                                        ]
+                                      ]
+                                      , "details":
+                                      [
+                                        {
+                                          "type":"brief"
+                                          , "text":"Serial exe: Data dependency"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Iteration executed serially across cnn.B44. Only a single loop iteration will execute inside this region due to data dependency on variable(s):"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"running_sum (%L)"
+                                              , "links":
+                                              [
+                                                {
+                                                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                  , "line":"58"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Hyper-Optimized loop structure: enabled."
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Stallable instruction: n/a"
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"Maximum concurrent iterations: Capacity of loop"
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"text"
+                                              , "text":"Use the %L viewer to estimate capacity"
+                                              , "links":
+                                              [
+                                                {
+                                                  "view":"Fmax II Report"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                        , {
+                                          "type":"text"
+                                          , "text":"See %L for more information"
+                                          , "links":
+                                          [
+                                            {
+                                              "guide":"Best Practices Guide : Nested Loops"
+                                              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#rfr1469543500580"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                      , "children":
+                                      [
+                                        {
+                                          "name":"cnn.B44"
+                                          , "data":
+                                          ["Yes", "~17", "0"]
+                                          , "debug":
+                                          [
+                                            [
+                                              {
+                                                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                , "line":63
+                                              }
+                                            ]
+                                          ]
+                                          , "details":
+                                          [
+                                            {
+                                              "type":"brief"
+                                              , "text":"Data dependency"
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Compiler failed to schedule this loop with smaller II due to data dependency on variable(s):"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"running_sum (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"58"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Most critical loop feedback path during scheduling:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"6.00 clock cycles 32-bit Integer to Floating-point Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"4.00 clock cycles Hardened Floating-Point Multiply-Add Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"3.00 clock cycles 8-bit Floating-point to Integer Conversion Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"64"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Hyper-Optimized loop structure: disabled."
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"II is an approximation due to the following stallable instructions:"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"65"
+                                                    }
+                                                  ]
+                                                }
+                                                , {
+                                                  "type":"text"
+                                                  , "text":"Load Operation (%L)"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                                                      , "line":"66"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"Maximum concurrent iterations: Capacity of loop"
+                                              , "details":
+                                              [
+                                                {
+                                                  "type":"text"
+                                                  , "text":"Use the %L viewer to estimate capacity"
+                                                  , "links":
+                                                  [
+                                                    {
+                                                      "view":"Fmax II Report"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                            , {
+                                              "type":"text"
+                                              , "text":"See %L for more information"
+                                              , "links":
+                                              [
+                                                {
+                                                  "guide":"Best Practices Guide : Loops in a Single Work-Item Kernel"
+                                                  , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#wfa1476380079940"
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                          , "children":
+                                          [
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

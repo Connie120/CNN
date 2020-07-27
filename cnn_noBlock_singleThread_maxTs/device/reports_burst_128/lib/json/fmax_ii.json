@@ -1,0 +1,1560 @@
+{
+  "basicblocks":
+  {
+    "cnn.B0":
+    {
+      "name":"cnn.B0"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":8
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":0
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B1":
+    {
+      "name":"cnn.B1"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":15
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":1
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"52"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B2":
+    {
+      "name":"cnn.B2"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":15
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":2
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"53"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B3":
+    {
+      "name":"cnn.B3"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":15
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":3
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"54"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B4":
+    {
+      "name":"cnn.B4"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":12
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":4
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"55"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B5":
+    {
+      "name":"cnn.B5"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":12
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":5
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"56"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B6":
+    {
+      "name":"cnn.B6"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":12
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":6
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"57"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B7":
+    {
+      "name":"cnn.B7"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":17
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"60"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B8":
+    {
+      "name":"cnn.B8"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":16
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B9":
+    {
+      "name":"cnn.B9"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B10":
+    {
+      "name":"cnn.B10"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B11":
+    {
+      "name":"cnn.B11"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B12":
+    {
+      "name":"cnn.B12"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":9
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":6
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B13":
+    {
+      "name":"cnn.B13"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":5
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B14":
+    {
+      "name":"cnn.B14"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":4
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B15":
+    {
+      "name":"cnn.B15"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":3
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B16":
+    {
+      "name":"cnn.B16"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":2
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B17":
+    {
+      "name":"cnn.B17"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":1
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B18":
+    {
+      "name":"cnn.B18"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":0
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B19":
+    {
+      "name":"cnn.B19"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B20":
+    {
+      "name":"cnn.B20"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B21":
+    {
+      "name":"cnn.B21"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B22":
+    {
+      "name":"cnn.B22"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B23":
+    {
+      "name":"cnn.B23"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B24":
+    {
+      "name":"cnn.B24"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B25":
+    {
+      "name":"cnn.B25"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B26":
+    {
+      "name":"cnn.B26"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B27":
+    {
+      "name":"cnn.B27"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B28":
+    {
+      "name":"cnn.B28"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B29":
+    {
+      "name":"cnn.B29"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B30":
+    {
+      "name":"cnn.B30"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B31":
+    {
+      "name":"cnn.B31"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B32":
+    {
+      "name":"cnn.B32"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B33":
+    {
+      "name":"cnn.B33"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B34":
+    {
+      "name":"cnn.B34"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B35":
+    {
+      "name":"cnn.B35"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B36":
+    {
+      "name":"cnn.B36"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B37":
+    {
+      "name":"cnn.B37"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B38":
+    {
+      "name":"cnn.B38"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":7
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B39":
+    {
+      "name":"cnn.B39"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":22
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B40":
+    {
+      "name":"cnn.B40"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B41":
+    {
+      "name":"cnn.B41"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B42":
+    {
+      "name":"cnn.B42"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":16
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B43":
+    {
+      "name":"cnn.B43"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"432.0"
+      , "achieved_ii":1
+      , "latency":16
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"62"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B44":
+    {
+      "name":"cnn.B44"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"336.0"
+      , "achieved_ii":5
+      , "latency":211
+      , "max_interleaving":5
+      , "is_fmax_bottleneck":"Yes"
+      , "is_loop_header":"Yes"
+      , "is_single_block_loop":"Yes"
+      , "loop_layer":9
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Variable on loop carried feedback path"
+        }
+        , {
+          "type":"text"
+          , "text":"Loop feedback path that lowered Fmax "
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Node: Hardened Floating-Point Multiply-Add Operation (%L)"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"64"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+      , "loop_location":
+      {
+        "details":
+        [
+          {
+            "type":"text"
+            , "text":"Loop:  (%L)"
+            , "links":
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":"63"
+              }
+            ]
+          }
+        ]
+      }
+    }
+    , "cnn.B45":
+    {
+      "name":"cnn.B45"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":1
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":8
+      , "loop_location":
+      {
+      }
+    }
+    , "cnn.B46":
+    {
+      "name":"cnn.B46"
+      , "target_fmax":"Not specified"
+      , "target_ii":"Not specified"
+      , "achieved_fmax":"480.0"
+      , "achieved_ii":1
+      , "latency":0
+      , "max_interleaving":1
+      , "is_fmax_bottleneck":"No"
+      , "is_loop_header":"No"
+      , "is_single_block_loop":"No"
+      , "loop_layer":7
+      , "loop_location":
+      {
+      }
+    }
+  }
+  , "functions":
+  {
+    "cnn":
+    {
+      "debug":
+      [
+        {
+          "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+          , "line":26
+        }
+      ]
+      , "loop_hierachy":
+      {
+        "cnn__no_loop":
+        [
+          "cnn.B0"
+          , "cnn.B18"
+        ]
+        , "cnn.B1":
+        [
+          "cnn.B1"
+          , "cnn.B2"
+          , "cnn.B17"
+        ]
+        , "cnn.B2":
+        [
+          "cnn.B2"
+          , "cnn.B3"
+          , "cnn.B16"
+        ]
+        , "cnn.B3":
+        [
+          "cnn.B3"
+          , "cnn.B4"
+          , "cnn.B15"
+        ]
+        , "cnn.B4":
+        [
+          "cnn.B4"
+          , "cnn.B5"
+          , "cnn.B14"
+        ]
+        , "cnn.B5":
+        [
+          "cnn.B5"
+          , "cnn.B6"
+          , "cnn.B13"
+        ]
+        , "cnn.B6":
+        [
+          "cnn.B6"
+          , "cnn.B7"
+          , "cnn.B12"
+        ]
+        , "cnn.B7":
+        [
+          "cnn.B7"
+          , "cnn.B8"
+          , "cnn.B11"
+          , "cnn.B19"
+          , "cnn.B22"
+          , "cnn.B23"
+          , "cnn.B26"
+          , "cnn.B27"
+          , "cnn.B30"
+          , "cnn.B31"
+          , "cnn.B34"
+          , "cnn.B35"
+          , "cnn.B38"
+          , "cnn.B39"
+          , "cnn.B42"
+          , "cnn.B43"
+          , "cnn.B46"
+        ]
+        , "cnn.B8":
+        [
+          "cnn.B8"
+          , "cnn.B9"
+          , "cnn.B10"
+        ]
+        , "cnn.B9":
+        [
+          "cnn.B9"
+        ]
+        , "cnn.B19":
+        [
+          "cnn.B19"
+          , "cnn.B20"
+          , "cnn.B21"
+        ]
+        , "cnn.B20":
+        [
+          "cnn.B20"
+        ]
+        , "cnn.B23":
+        [
+          "cnn.B23"
+          , "cnn.B24"
+          , "cnn.B25"
+        ]
+        , "cnn.B24":
+        [
+          "cnn.B24"
+        ]
+        , "cnn.B27":
+        [
+          "cnn.B27"
+          , "cnn.B28"
+          , "cnn.B29"
+        ]
+        , "cnn.B28":
+        [
+          "cnn.B28"
+        ]
+        , "cnn.B31":
+        [
+          "cnn.B31"
+          , "cnn.B32"
+          , "cnn.B33"
+        ]
+        , "cnn.B32":
+        [
+          "cnn.B32"
+        ]
+        , "cnn.B35":
+        [
+          "cnn.B35"
+          , "cnn.B36"
+          , "cnn.B37"
+        ]
+        , "cnn.B36":
+        [
+          "cnn.B36"
+        ]
+        , "cnn.B39":
+        [
+          "cnn.B39"
+          , "cnn.B40"
+          , "cnn.B41"
+        ]
+        , "cnn.B40":
+        [
+          "cnn.B40"
+        ]
+        , "cnn.B43":
+        [
+          "cnn.B43"
+          , "cnn.B44"
+          , "cnn.B45"
+        ]
+        , "cnn.B44":
+        [
+          "cnn.B44"
+        ]
+      }
+    }
+  }
+}
