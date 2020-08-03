@@ -1,0 +1,3494 @@
+{
+  "columns":
+  ["", "ALUTs", "FFs", "RAMs", "DSPs", "MLABs", "Details"]
+  , "debug_enabled":"true"
+  , "type":"module"
+  , "total_percent":
+  [52.6179, 20.9521, 31.7966, 46.0114, 2.5]
+  , "total":
+  [382916, 1186802, 5393, 144, 405]
+  , "name":"Kernel System"
+  , "max_resources":
+  [1866240, 3732480, 11721, 5760, 93312]
+  , "children":
+  [
+    {
+      "name":"Static Partition"
+      , "type":"partition"
+      , "children":
+      [
+        {
+          "name":"Board interface"
+          , "type":"resource"
+          , "data":
+          [200000, 275150, 467, 0, 0]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Platform interface logic."
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Global interconnect"
+      , "type":"resource"
+      , "data":
+      [28084, 38336, 104, 0, 0]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Global interconnect for 33 global loads and 1 global store. Reduce number of global loads and stores to simplify global interconnect."
+        }
+        , {
+          "type":"brief"
+          , "text":"For 33 global loads and 1 global store."
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Global Memory Interconnect"
+              , "link":"https://www.intel.com/content/www/us/en/programmable/documentation/mwh1391807516407.html#hnj1476724450050"
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"System description ROM"
+      , "type":"resource"
+      , "data":
+      [2, 71, 2, 0, 0]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"This read-only memory contains information for the host about the system and about each kernel in the system, including kernel names, arguments, and attributes. The system description ROM ensures that the binary image on the FPGA is compatible with the host program."
+        }
+        , {
+          "type":"brief"
+          , "text":"Contains information for the host."
+        }
+      ]
+    }
+    , {
+      "name":"cnn"
+      , "compute_units":1
+      , "type":"function"
+      , "total_percent":
+      [33.0864, 8.73039, 23.3958, 41.1228, 2.5]
+      , "total_kernel_resources":
+      [154830, 873245, 4820, 144, 405]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Number of compute units: 1"
+        }
+        , {
+          "type":"text"
+          , "text":"Kernel attribute 'uses_global_work_offset' not specified. Add '__attribute__((uses_global_work_offset(0)))' to reduce area utilization if the kernel will always be enqueued with a 0 or NULL global_work_offset argument in clEnqueueNDRangeKernel. Add '__attribute__((uses_global_work_offset(1)))' to hide this suggestion without affecting kernel functionality."
+        }
+        , {
+          "type":"text"
+          , "text":"The following loop is nested at depth greater than 3. Reducing the depth of this nested loop will save area:"
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"%L with depth 7"
+              , "links":
+              [
+                {
+                  "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                  , "line":"60"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "type":"brief"
+          , "text":"1 compute unit.\nKernel attribute 'uses_global_work_offset' not specified. Add '__attribute__((uses_global_work_offset(0)))' to reduce area utilization if the kernel will always be enqueued with a 0 or NULL global_work_offset argument in clEnqueueNDRangeKernel. Add '__attribute__((uses_global_work_offset(1)))' to hide this suggestion without affecting kernel functionality.\n1 loop nested 3 levels deep or more."
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"Function overhead"
+          , "type":"resource"
+          , "data":
+          [1463, 1467, 0, 0, 6]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Kernel dispatch logic."
+            }
+            , {
+              "type":"brief"
+              , "text":"Kernel dispatch logic."
+            }
+          ]
+        }
+        , {
+          "name":"Private Variable: \n - 'col' (cnn.cl:42)"
+          , "type":"resource"
+          , "data":
+          [40, 128, 0, 0, 0]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":42
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Type: Register"
+            }
+            , {
+              "type":"text"
+              , "text":"1 register of width 64"
+            }
+            , {
+              "type":"brief"
+              , "text":"Register,\n1 reg, 64 width"
+            }
+          ]
+        }
+        , {
+          "name":"Private Variable: \n - 'row' (cnn.cl:42)"
+          , "type":"resource"
+          , "data":
+          [40, 128, 0, 0, 0]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":42
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Type: Register"
+            }
+            , {
+              "type":"text"
+              , "text":"1 register of width 64"
+            }
+            , {
+              "type":"brief"
+              , "text":"Register,\n1 reg, 64 width"
+            }
+          ]
+        }
+        , {
+          "name":"Private Variable: \n - 'running_sum' (cnn.cl:58)"
+          , "type":"resource"
+          , "data":
+          [106, 108, 1, 0, 0]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":58
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Type: Register"
+            }
+            , {
+              "type":"text"
+              , "text":"1 register of width 32 and depth 385 (depth was increased by a factor of 385 due to a loop initiation interval of 385.)"
+            }
+            , {
+              "type":"brief"
+              , "text":"Register,\n1 reg, 32 width by 385 depth"
+            }
+          ]
+        }
+        , {
+          "name":"Private Variable: \n - 'ti' (cnn.cl:42)"
+          , "type":"resource"
+          , "data":
+          [0, 0, 2, 0, 0]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":42
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Type: Register"
+            }
+            , {
+              "type":"text"
+              , "text":"1 register of width 64 and depth 385 (depth was increased by a factor of 385 due to a loop initiation interval of 385.)"
+            }
+            , {
+              "type":"brief"
+              , "text":"Register,\n1 reg, 64 width by 385 depth"
+            }
+          ]
+        }
+        , {
+          "name":"Private Variable: \n - 'to' (cnn.cl:42)"
+          , "type":"resource"
+          , "data":
+          [40, 128, 0, 0, 0]
+          , "debug":
+          [
+            [
+              {
+                "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                , "line":42
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Type: Register"
+            }
+            , {
+              "type":"text"
+              , "text":"1 register of width 64"
+            }
+            , {
+              "type":"brief"
+              , "text":"Register,\n1 reg, 64 width"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B0"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [0, 384, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [0, 192, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [7, 2, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:26"
+                  , "type":"resource"
+                  , "data":
+                  [7, 2, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":26
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [7, 6, 0, 0, 1]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [192, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [192, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B1"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [40, 1137, 0, 0, 4]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [40, 814, 0, 0, 4]
+                }
+                , {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [0, 128, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [0, 67, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [48, 78, 0, 0, 5]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [41.5, 16, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [41.5, 16, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [41.5, 16, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [41.5, 16, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [83, 32, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":6
+                      , "data":
+                      [83, 32, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [537, 68, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [128, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [268, 4, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [5, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [71, 64, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [65, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B11"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [672, 1536, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [672, 1344, 0, 0, 0]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [0, 192, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [8, 7, 0, 0, 1]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [192, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [128, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B12"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [448, 1088, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [448, 896, 0, 0, 0]
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [0, 192, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [8, 7, 0, 0, 1]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [192, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [128, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B13"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [224, 640, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [224, 448, 0, 0, 0]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [0, 192, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [8, 7, 0, 0, 1]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [192, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [128, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B14"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [5, 8, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:79"
+                  , "type":"resource"
+                  , "data":
+                  [5, 8, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":79
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B2"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [112, 1434, 0, 0, 4]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [112, 1111, 0, 0, 4]
+                }
+                , {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [0, 128, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [0, 67, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [48, 78, 0, 0, 5]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [33.5, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33.5, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [33.5, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33.5, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [67, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":6
+                      , "data":
+                      [67, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [538, 68, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [128, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [268, 4, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [5, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [71, 64, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [65, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B3"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [86, 1196, 0, 0, 11]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [86, 873, 0, 0, 11]
+                }
+                , {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [0, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [0, 160.5, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [0, 34.5, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [48, 78, 0, 0, 5]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [41.5, 16, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [41.5, 16, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [41.5, 16, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [41.5, 16, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [286, 65, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [67, 1, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [4, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [118.5, 64, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [32.5, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [342, 35, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [201, 3, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Subtract"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [4, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [39.5, 32, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [32.5, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B4"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [13, 582, 0, 0, 12]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [13, 582, 0, 0, 12]
+                }
+              ]
+            }
+            , {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [266, 523, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [13, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [26, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [29.5, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [109, 267, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [59, 128, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [29.5, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [300, 585, 0, 0, 29]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [23.2, 12.8, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [12.8, 12.8, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [10.4, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [46.4, 25.6, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [25.6, 25.6, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [20.8, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [199.4, 26.6, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [2, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [25.6, 25.6, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [65, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [22, 1, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [20.8, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B5"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [67, 1492, 0, 0, 32]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [67, 1492, 0, 0, 32]
+                }
+              ]
+            }
+            , {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [452, 909, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [10.8333, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [22.6333, 25.6, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [23.6, 51.2, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [21.6667, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [29.5, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [91.6, 181.2, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [104.667, 267, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [29.5, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:72"
+                  , "type":"resource"
+                  , "data":
+                  [118, 256, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":72
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [558, 1099, 0, 0, 55]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [19.3333, 10.6667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [10.6667, 10.6667, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [8.66667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [19.3333, 10.6667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [10.6667, 10.6667, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [8.66667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [38.6667, 21.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [21.3333, 21.3333, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [17.3333, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [159.667, 21.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [2, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [32, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [21.3333, 21.3333, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [65, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [22, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [17.3333, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:68"
+                  , "type":"resource"
+                  , "data":
+                  [32, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":68
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [32, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B6"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [75, 2335, 0, 0, 68]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [75, 2335, 0, 0, 68]
+                }
+              ]
+            }
+            , {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [579, 1167, 0, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [20.6667, 21.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [32.4667, 46.9333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [23.6, 51.2, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [19.6667, 42.6667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [51.1667, 64, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [91.6, 181.2, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [87.6667, 172.667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [75.1667, 203, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:72"
+                  , "type":"resource"
+                  , "data":
+                  [177, 384, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":72
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [881, 1742, 0, 0, 87]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [19.3333, 10.6667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [10.6667, 10.6667, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [8.66667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [19.3333, 10.6667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [10.6667, 10.6667, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [8.66667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [38.6667, 21.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [21.3333, 21.3333, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [17.3333, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [191.667, 21.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [2, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [21.3333, 21.3333, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [65, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [22, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"65-bit Select"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [17.3333, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B7"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [6980, 41416, 297, 0, 64]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [6980, 41416, 297, 0, 64]
+                }
+              ]
+            }
+            , {
+              "name":"Feedback"
+              , "type":"resource"
+              , "data":
+              [92, 64, 25, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Loop-carried dependencies"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for loop-carried dependencies. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce number and size of loop-carried variables"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:41"
+                  , "type":"resource"
+                  , "data":
+                  [0.333333, 0, 0.666667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":41
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [0.866667, 0, 1.06667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [0.4, 0, 0.8, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:53"
+                  , "type":"resource"
+                  , "data":
+                  [0.333333, 0, 0.666667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":53
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:54"
+                  , "type":"resource"
+                  , "data":
+                  [0.833333, 0, 1.66667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":54
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [2.4, 0, 3.8, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:56"
+                  , "type":"resource"
+                  , "data":
+                  [2.33333, 0, 3.66667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":56
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [1.83333, 0, 2.66667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:58"
+                  , "type":"resource"
+                  , "data":
+                  [2, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":58
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:60"
+                  , "type":"resource"
+                  , "data":
+                  [76.6667, 64, 2, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":60
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:67"
+                  , "type":"resource"
+                  , "data":
+                  [1, 0, 2, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":67
+                      }
+                    ]
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:72"
+                  , "type":"resource"
+                  , "data":
+                  [3, 0, 6, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":72
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [1849, 3607, 90, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:42"
+                  , "type":"resource"
+                  , "data":
+                  [21.3333, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":42
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [21.3333, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [42.6667, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [42.6667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:55"
+                  , "type":"resource"
+                  , "data":
+                  [42.6667, 0, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":55
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [42.6667, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:60"
+                  , "type":"resource"
+                  , "data":
+                  [73, 1, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":60
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"1-bit And"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"1-bit Xor"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1, 1, 0, 0, 0]
+                    }
+                    , {
+                      "name":"5-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [5, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"5-bit Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [2, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [64, 0, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:66"
+                  , "type":"resource"
+                  , "data":
+                  [0, 0, 0, 128, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":66
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Hardened Floating-Point Dot Product of Size 2"
+                      , "type":"resource"
+                      , "count":64
+                      , "data":
+                      [0, 0, 0, 128, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:67"
+                  , "type":"resource"
+                  , "data":
+                  [13704, 26619, 516, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":67
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [13704, 26619, 516, 0, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced cached LSU.  Load with a private 512 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+                        }
+                        , {
+                          "type":"brief"
+                          , "text":"Burst-coalesced cached LSU,\nLoad with a private 512 kilobit cache"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:68"
+                  , "type":"resource"
+                  , "data":
+                  [121118, 778329, 3872, 16, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":68
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"64-bit Integer Add"
+                      , "type":"resource"
+                      , "count":5
+                      , "data":
+                      [213.333, 0, 0, 0, 0]
+                    }
+                    , {
+                      "name":"64-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [937, 1337, 0, 16, 0]
+                    }
+                    , {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":32
+                      , "data":
+                      [119968, 776992, 3872, 0, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced non-aligned cached LSU.  Load with a private 512 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+                        }
+                        , {
+                          "type":"brief"
+                          , "text":"Burst-coalesced non-aligned cached LSU,\nLoad with a private 512 kilobit cache"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B8"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [168, 407, 0, 0, 10]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Live values and control logic"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [168, 407, 0, 0, 10]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [39, 70, 0, 0, 4]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:72"
+                  , "type":"resource"
+                  , "data":
+                  [390, 2128, 17, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"/home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl"
+                        , "line":72
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Store"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [390, 2128, 17, 0, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Store uses a Burst-coalesced LSU"
+                        }
+                        , {
+                          "type":"brief"
+                          , "text":"Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

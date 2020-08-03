@@ -46,23 +46,23 @@
 /* 
  * weights parameters
  */
-#define K_wts (4) // weight width and height (square)
-                  // same depth as output
-#define S_wts (1) // sliding stride
+#define K_wts (11) // weight width and height (square)
+//                   // same depth as output
+// #define S_wts (4) // sliding stride
 
-/* 
- * output feature map paramters
- */
-#define R_ofm (16) // height
-#define C_ofm (16) // width
-#define M_ofm (128) // depth
+// /* 
+//  * output feature map paramters
+//  */
+// #define R_ofm (55) // height
+// #define C_ofm (55) // width
+// #define M_ofm (48) // depth
 
 /*
  * input feature map paramters
  */
-#define N_ifm (128) // depth
-#define R_ifm (R_ofm*S_wts+K_wts-1) // derived height
-#define C_ifm (C_ofm*S_wts+K_wts-1) // derived width
+#define N_ifm (3) // depth
+// #define R_ifm (R_ofm*S_wts+K_wts-S_wts) // derived height
+// #define C_ifm (C_ofm*S_wts+K_wts-S_wts) // derived width
 
 // Block size. Affects the kernel, so if this value changes, the kernel
 // needs to be recompiled.

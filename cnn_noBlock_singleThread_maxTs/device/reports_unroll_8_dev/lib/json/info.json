@@ -1,0 +1,8 @@
+{"name":"Info","rows":[
+{"classes":["info-table"],"data":["cnn"],"name":"Project Name"},
+{"data":["Stratix 10, 1SX280HN2F43E2VG, dcp_bsp:pac_s10_dc"],"name":"Target Family, Device, Board"},
+{"data":["19.2.0 Build 57"],"name":"AOC Version"},
+{"data":["19.2.0 Build 57 Pro"],"name":"Quartus Version"},
+{"data":["aoc -profile /home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.cl -o /home/u44994/CNN/cnn_noBlock_singleThread_maxTs/device/cnn.aocx"],"name":"Command"},
+{"data":["Tue Jul 28 14:12:13 2020"],"name":"Reports Generated At"}
+]}

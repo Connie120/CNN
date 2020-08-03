@@ -39,7 +39,7 @@ Tc_16 = [];
 GFLOPS_16 = [];
 
 T_16 = readtable('cpu_buf.csv'); 
-for i=1:2031
+for i=1:N
 %     if T_8.Tm(i) == 64
 %         Tr_Tc_16 = [Tr_Tc_16 T_16.Tr_Tc(i)];
         Tm_16 = [Tm_16 T_16.Tm(i)];

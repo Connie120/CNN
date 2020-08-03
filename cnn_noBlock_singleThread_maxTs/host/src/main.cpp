@@ -34,16 +34,30 @@ cl_mem input_buf; // num_devices elements
 cl_mem weight_buf;
 cl_mem output_buf; // num_devices elements
 
-float* dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
-float* dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
-float* dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
-
-float* ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
-
 cl_int Tm;
 cl_int Tr;
 cl_int Tc;
 cl_int Tn;
+// cl_int K_wts;
+cl_int S_wts;
+cl_int M_ofm;
+cl_int R_ofm;
+cl_int C_ofm;
+// cl_int N_ifm;
+cl_int R_ifm;
+cl_int C_ifm;
+
+float* dt_input;
+float* dt_output;
+float* dt_weights;
+
+float* ref_output;
+
+// float* dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
+// float* dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+// float* dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
+
+// float* ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
 // Function prototypes
 void ZhangIsfpga15_1_fp(float *input, float *output, float *weights);
@@ -56,9 +70,6 @@ void cleanup();
 
 // Entry point.
 int main(int argc, char **argv) {
-	printf("R_ofm: %d\n", R_ofm);
-	printf("C_ofm: %d\n", C_ofm);
-	printf("M_ofm: %d\n", M_ofm);
 
     // printf("argc: %d\n", argc);
     // printf("argv: %s\n", argv[1]);
@@ -69,10 +80,40 @@ int main(int argc, char **argv) {
     Tc = atoi(argv[3]);
     Tn = atoi(argv[4]);
 
+    // K_wts = atoi(argv[5]);
+    S_wts = atoi(argv[6]);
+
+    M_ofm = atoi(argv[7]);
+    R_ofm = atoi(argv[8]);
+    C_ofm = atoi(argv[9]);
+
+    // N_ifm = atoi(argv[10]);
+    // R_ifm = atoi(argv[11]);
+    // C_ifm = atoi(argv[12]);
+    R_ifm = R_ofm * S_wts + K_wts - S_wts;
+    C_ifm = C_ofm * S_wts + K_wts - S_wts;
+
     printf("Tr: %d\n", Tr);	
 	printf("Tc: %d\n", Tc);
 	printf("Tm: %d\n", Tm);
     printf("Tn: %d\n", Tn);
+
+    printf("K_wts: %d\n", K_wts);
+	printf("S_wts: %d\n", S_wts);
+
+	printf("R_ofm: %d\n", R_ofm);
+	printf("C_ofm: %d\n", C_ofm);
+	printf("M_ofm: %d\n", M_ofm);
+
+	printf("N_ifm: %d\n", N_ifm);
+    printf("R_ifm: %d\n", R_ifm);
+	printf("C_ifm: %d\n", C_ifm);
+
+    dt_input = (float*)acl_aligned_malloc(N_ifm*R_ifm*C_ifm * sizeof(float));
+    dt_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
+    dt_weights = (float*)acl_aligned_malloc(M_ofm*N_ifm*K_wts*K_wts * sizeof(float));
+
+    ref_output = (float*)acl_aligned_malloc(M_ofm*R_ofm*C_ofm * sizeof(float));
 
     // Initialize OpenCL.
     if(!init_opencl()) {
@@ -258,6 +299,30 @@ void run() {
     checkError(status, "Failed to set argument %d", argi - 1);
 
     status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &Tn);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &K_wts);
+    // checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &S_wts);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &M_ofm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &R_ofm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &C_ofm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    // status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &N_ifm);
+    // checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &R_ifm);
+    checkError(status, "Failed to set argument %d", argi - 1);
+
+    status = clSetKernelArg(kernel, argi++, sizeof(cl_int), &C_ifm);
     checkError(status, "Failed to set argument %d", argi - 1);
 
     // Enqueue kernel.

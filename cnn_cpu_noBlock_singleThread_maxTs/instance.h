@@ -61,8 +61,8 @@
  * input feature map paramters
  */
 #define N_ifm (128) // depth
-#define R_ifm (R_ofm*S_wts+K_wts-1) // derived height
-#define C_ifm (C_ofm*S_wts+K_wts-1) // derived width
+#define R_ifm (R_ofm*S_wts+K_wts-S_wts) // derived height
+#define C_ifm (C_ofm*S_wts+K_wts-S_wts) // derived width
 
 // Block size. Affects the kernel, so if this value changes, the kernel
 // needs to be recompiled.

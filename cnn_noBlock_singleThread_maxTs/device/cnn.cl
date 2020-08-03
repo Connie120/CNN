@@ -23,31 +23,18 @@
 #include "../host/inc/instance.h"
 
 __attribute((reqd_work_group_size(1, 1, 1)))
-__kernel void cnn(__global char* const restrict input, __global char* const restrict weights, __global char* restrict output, 
-                    const int Tm, const int Tr, const int Tc, const int Tn)
+__kernel void cnn(__global float* const restrict input, __global float* const restrict weights, __global float* restrict output, 
+                    const int Tm, const int Tr, const int Tc, const int Tn,
+                    const int S_wts, const int M_ofm, const int R_ofm, const int C_ofm, const int R_ifm, const int C_ifm)
 {
-	//printf("Tm: %lu\n", Tm);
-	//printf("Tr: %lu\n", Tr);
-	//printf("Tc: %lu\n", Tc);
 	//unsigned long too = get_global_id(0) * Tm;
 	//unsigned long roo = get_global_id(1) * Tr;
 	//unsigned long coo = get_global_id(2) * Tc;
-	//printf("global_id(0): %lu\n", get_global_id(0));
-	//printf("global_id(1): %lu\n", get_global_id(1));
-	//printf("global_id(2): %lu\n", get_global_id(2));
-	//printf("too: %lu\n", too);
-	//printf("roo: %lu\n", roo);
-	//printf("coo: %lu\n", coo);
+
+
+	
 	unsigned long too, roo, coo, tii;
 	unsigned long ti, row, col, to;
-
-	/*for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
-		for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
-			for(to=too; to<MIN(too+Tm, M_ofm); to++) {
-				ARRAY(output,0,to,row,col,0,M_ofm,R_ofm,C_ofm) = 0.0f;
-			}
-		}
-	}*/
 
 	for(roo=0; roo<R_ofm; roo+=Tr) {
 		for(coo=0; coo<C_ofm; coo+=Tc) {
@@ -55,15 +42,17 @@ __kernel void cnn(__global char* const restrict input, __global char* const rest
                 for(row=roo; row<MIN(roo+Tr, R_ofm); row++) {
                     for(col=coo; col<MIN(coo+Tc, C_ofm); col++) {
                         for(to=too; to<MIN(too+Tm, M_ofm); to++) {
-                            char running_sum = 0.0f;
-							#pragma unroll 8
+                            float running_sum = 0.0f;
+							#pragma unroll 16
                             for(ti=0; ti<N_ifm; ti++) {
                                 unsigned long i, j;
+                                #pragma unroll
                                 for(i=0; i<K_wts; i++) {
+                                    #pragma unroll
                                     for(j=0; j<K_wts; j++) {
                                         running_sum += 
-                                        __burst_coalesced_cached_load(&ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts), 128)*
-                                        __burst_coalesced_cached_load(&ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm), 128);
+                                        ARRAY(weights,to,ti,i,j,M_ofm,N_ifm,K_wts,K_wts)*
+                                        ARRAY(input,0,ti,S_wts*row+i,S_wts*col+j,0,N_ifm,R_ifm,C_ifm);
                                     }
                                 }
                             }

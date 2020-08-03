@@ -1,0 +1,207 @@
+{
+  "nodes":
+  [
+    {
+      "name":"cnn"
+      , "id":2171317048
+      , "type":"kernel"
+      , "children":
+      [
+        {
+          "name":"cnn.B6"
+          , "id":2171399696
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 9"
+              , "id":2184676832
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B11"
+          , "id":2171400096
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 13"
+              , "id":2192067072
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B10"
+          , "id":2171400016
+          , "type":"bb"
+        }
+        , {
+          "name":"cnn.B1"
+          , "id":2171392448
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 1"
+              , "id":2182216400
+              , "type":"cluster"
+            }
+            , {
+              "name":"Cluster 2"
+              , "id":2182257872
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B12"
+          , "id":2171400176
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 14"
+              , "id":2192297936
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B9"
+          , "id":2171399936
+          , "type":"bb"
+        }
+        , {
+          "name":"cnn.B13"
+          , "id":2171400256
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 15"
+              , "id":2192523824
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B7"
+          , "id":2171399776
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 10"
+              , "id":2185547120
+              , "type":"cluster"
+            }
+            , {
+              "name":"Cluster 11"
+              , "id":2185551200
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B8"
+          , "id":2171399856
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 12"
+              , "id":2191794736
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B5"
+          , "id":2171332272
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 8"
+              , "id":2183789616
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B3"
+          , "id":2171332112
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 5"
+              , "id":2182882992
+              , "type":"cluster"
+            }
+            , {
+              "name":"Cluster 6"
+              , "id":2182924864
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B14"
+          , "id":2171400336
+          , "type":"bb"
+        }
+        , {
+          "name":"cnn.B0"
+          , "id":2171399072
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 0"
+              , "id":2181992000
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B4"
+          , "id":2171332192
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 7"
+              , "id":2183228656
+              , "type":"cluster"
+            }
+          ]
+        }
+        , {
+          "name":"cnn.B2"
+          , "id":2171332032
+          , "type":"bb"
+          , "children":
+          [
+            {
+              "name":"Cluster 3"
+              , "id":2182538496
+              , "type":"cluster"
+            }
+            , {
+              "name":"Cluster 4"
+              , "id":2182580416
+              , "type":"cluster"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  , "links":
+  [
+  ]
+}
